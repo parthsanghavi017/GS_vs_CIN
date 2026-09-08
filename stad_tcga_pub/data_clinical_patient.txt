@@ -1,0 +1,300 @@
+#Patient Identifier	Lauren Class	Intestinal Type Subclass	Signet Ring	WHO Class	American Joint Committee on Cancer Tumor Stage Code	Neoplasm Disease Lymph Node Stage American Joint Committee on Cancer Code	American Joint Committee on Cancer Metastasis Stage Code	Anatomic Region	Surgical Margin Resection Status	Diagnosis Age	Country of Procurement	Sex	Race Category	Overall Survival Status	Overall Survival (Months)	Disease Free Status	Disease Free (Months)	EBV Present	Percent Tumor Nuclei	Percent Tumor Cells	Percent Lymphocyte Infiltration	Copy Number Cluster
+#Identifier to uniquely specify a patient.	Lauren class.	Intestinal type subclass.	Signet ring.	WHO class.	Code of pathological T (primary tumor) to define the size or contiguous extension of the primary tumor (T), using staging criteria from the American Joint Committee on Cancer (AJCC).	The codes that represent the stage of cancer based on the nodes present (N stage) according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.	Code to represent the defined absence or presence of distant spread or metastases (M) to locations via vascular channels or lymphatics beyond the regional lymph nodes, using criteria established by the American Joint Committee on Cancer (AJCC).	Anatomic Region.	Text terms to describe the status of a tissue margin following surgical resection.	Age at which a condition or disease was first diagnosed.	Country of procurement.	Sex	The text for reporting information about race.	Overall patient survival status.	Overall survival in months since initial diagonosis.	Disease free status since initial treatment.	Disease free (months) since initial treatment.	EBV present.	Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen.	Numeric value to represent the percentage of malignant cell tumor nuclei content in a tumor sample or specimen.	Numeric value to represent the percentage of infiltration by lymphocytes in a tumor sample or specimen.	Copy number cluster.
+#STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	STRING	NUMBER	STRING	STRING	STRING	STRING	NUMBER	STRING	NUMBER	STRING	NUMBER	NUMBER	NUMBER	STRING
+#1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+PATIENT_ID	LAUREN_CLASS	INTESTINAL_TYPE_SUBCLASS	SIGNET_RING	WHO_CLASS	PATH_T_STAGE	PATH_N_STAGE	PATH_M_STAGE	ANATOMIC_REGION	RESIDUAL_TUMOR	AGE	COUNTRY_OF_PROCUREMENT	SEX	RACE	OS_STATUS	OS_MONTHS	DFS_STATUS	DFS_MONTHS	EBV_PRESENT	PERCENT_TUMOR_NUCLEI	PERCENT_TUMOR_CELLS	PERCENT_LYMPHOCYTE_INFILTRATION	COPY_NUMBER_CLUSTER
+TCGA-B7-5816	Diffuse		0	Poorly_Cohesive	T4a	N0	M0	FUNDUS_BODY	R0	51.19	Russia	Female	WHITE	0:LIVING	5.62			0	70	55	0	Low
+TCGA-B7-5818	Intestinal				T2	N0	M0	FUNDUS_BODY	R0	62.4	Russia	Male	WHITE	0:LIVING	11.7			1	77	82	0	Low
+TCGA-BR-4183	Intestinal	Tubular		Tubular	T4a	N1	M0	GEJ_CARDIA	RX	55.91	Russia	Female	WHITE	1:DECEASED	6.6	0:DiseaseFree		0	70	60	0	High
+TCGA-BR-4184	Intestinal	Tubular		Tubular	T4a	N1	M0	FUNDUS_BODY	RX	70.68	Russia	Male	WHITE	1:DECEASED	6.93	0:DiseaseFree		0	85	84	0	Low
+TCGA-BR-4187	Diffuse		1	Poorly_Cohesive	TX	NX	M0	ANTRUM	RX	56.49	Russia	Male	WHITE	1:DECEASED	4.63	0:DiseaseFree		0	82	70	0	Low
+TCGA-BR-4188	Diffuse		1	Poorly_Cohesive	TX	N1	M0	GEJ_CARDIA	RX	53.62	Russia	Female	WHITE	0:LIVING	0			0	82	77	0	Low
+TCGA-BR-4191	Intestinal	Tubular		Tubular	TX	N2	M0		RX	72.72	Russia	Male	WHITE	0:LIVING	0			0	85	89	0	High
+TCGA-BR-4201	Intestinal	Tubular		Tubular	T2	NX	M0	GEJ_CARDIA	RX	66.68	Russia	Female	WHITE	1:DECEASED	30.88	0:DiseaseFree		0	72	45	0	Low
+TCGA-BR-4253	Intestinal	Tubular		Tubular	T4a	N2	M0	FUNDUS_BODY	RX	80.49	Russia	Female	WHITE	0:LIVING	0			1	70	67	0	Low
+TCGA-BR-4255	Diffuse		0	Poorly_Cohesive	T4a	N2	M0		RX	76.37	Russia	Female	WHITE	0:LIVING	0			0	75	79	0	High
+TCGA-BR-4256	Intestinal	Tubular		Tubular	TX	N2	M0	ANTRUM	RX	80.6	Russia	Male	WHITE	0:LIVING	0			0	80	68	0	Low
+TCGA-BR-4257	Intestinal	Mucinous		Mucinous	TX	NX	M0	ANTRUM	RX	79.43	Russia	Female	WHITE	0:LIVING	0			0	85	82	0	High
+TCGA-BR-4267	Intestinal	Papillary		Papillary	T2	N0	M0	FUNDUS_BODY	RX	51.2	Russia	Male	WHITE	1:DECEASED	6.14	0:DiseaseFree		0	85	95	0	High
+TCGA-BR-4279	Diffuse		1	Poorly_Cohesive	T2	N2	M0		RX	43.98	Russia	Male	WHITE	1:DECEASED	9.56	0:DiseaseFree		0	75	53	0	Low
+TCGA-BR-4280	Intestinal	Tubular		Tubular	T3	N1	M0		RX	78.07	Russia	Female	WHITE	1:DECEASED	6.6	0:DiseaseFree		0	85	75	0	Low
+TCGA-BR-4292	Intestinal	Papillary		Papillary	T1b	NX	M0	FUNDUS_BODY	RX	73.02	Russia	Female	WHITE	0:LIVING	0			0	85	77	0	Low
+TCGA-BR-4294	Intestinal	Tubular		Tubular	T2	NX	M0	FUNDUS_BODY	RX	65.05	Russia	Male	WHITE	0:LIVING	0			0	85	86	0	High
+TCGA-BR-4357	Intestinal	Tubular		Tubular	T4a	NX	MX	FUNDUS_BODY	RX	58.3	Russia	Male	WHITE	0:LIVING	0			0	70	80	0	High
+TCGA-BR-4361					T4b	N0	M0		RX	66.42	Russia	Female	WHITE	0:LIVING	0			0	80	69	0	Low
+TCGA-BR-4362	Diffuse		0	Poorly_Cohesive	TX	N2	M0		RX	74.41	Russia	Female	WHITE	0:LIVING	0			0	80	85	0	Low
+TCGA-BR-4363					T4a	NX	MX	FUNDUS_BODY	RX	60.77	Russia	Female	WHITE	0:LIVING	0			0	80	70	0	Low
+TCGA-BR-4366	Intestinal	Tubular		Tubular	TX	NX	M0	ANTRUM	RX	87.68	Russia	Male	WHITE	0:LIVING	0			0	80	80	0	High
+TCGA-BR-4367	Diffuse		0	Poorly_Cohesive	TX	N1	M0	ANTRUM	RX	78.9	Russia	Male	WHITE	0:LIVING	0			0	75	90	0	High
+TCGA-BR-4368					T4b	N3	M0	ANTRUM	RX	78.77	Russia	Female	WHITE	0:LIVING	0			0	70	75	0	Low
+TCGA-BR-4369	Intestinal	Tubular		Tubular	TX	NX	M0	GEJ_CARDIA	RX	75.31	Russia	Male	WHITE	0:LIVING	0			0	75	75	0	High
+TCGA-BR-4370	Intestinal	Tubular		Tubular	TX	NX	M0	ANTRUM	RX	74.87	Russia	Female	WHITE	0:LIVING	0			0	70	72	0	Low
+TCGA-BR-4371	Intestinal	Papillary		Papillary	T2	NX	M0	FUNDUS_BODY	RX	71.98	Russia	Female	WHITE	0:LIVING	0			0	85	87	0	Low
+TCGA-BR-6452	Intestinal	Papillary		Papillary	T3	N0	M0	FUNDUS_BODY	R0	78.93	Russia	Female	WHITE	0:LIVING	8.44	0:DiseaseFree	8.44	0	77	97	10	Low
+TCGA-BR-6453	Diffuse		0	Poorly_Cohesive	T2	N1	M0	FUNDUS_BODY	R0	54.93	Russia	Male	WHITE	0:LIVING	15.9	0:DiseaseFree	15.9	0	70	77	10	Low
+TCGA-BR-6454	Intestinal	Tubular		Tubular	T3	N0	M0	GEJ_CARDIA	R0	58.87	Russia	Male	WHITE	0:LIVING	0			0	60	100	25	High
+TCGA-BR-6455	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	59.86	Russia	Male	WHITE	1:DECEASED	13.86	1:Recurred/Progressed	12.65	1	82	90	5	Low
+TCGA-BR-6456	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	74.71	Russia	Female	WHITE	1:DECEASED	17.25	0:DiseaseFree	10.12	0	77	95	10	High
+TCGA-BR-6457	Diffuse		0	Poorly_Cohesive	T3	N0	M0	FUNDUS_BODY	R0	69.53	Ukraine	Male	WHITE	0:LIVING	13.5	0:DiseaseFree	13.5	0	60	85	15	Low
+TCGA-BR-6458	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	57.68	Ukraine	Female	WHITE	1:DECEASED	18.33	1:Recurred/Progressed	17.87	0	77	100	7	High
+TCGA-BR-6563	Diffuse		1	Poorly_Cohesive	T3	N1	M0	ANTRUM	R0	60.06	Russia	Female	WHITE	0:LIVING	22.31			0	70	65	0	Low
+TCGA-BR-6564	Diffuse		0	Poorly_Cohesive	T3	N2	M0	FUNDUS_BODY	R0	46.9	Russia	Female	WHITE	0:LIVING	9.4	0:DiseaseFree	9.4	0	75	66	0	High
+TCGA-BR-6565	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	67.06	Russia	Male	WHITE	1:DECEASED	9.17	0:DiseaseFree	0.62	0	75	65	0	High
+TCGA-BR-6566	Intestinal	Mucinous		Mucinous	T3	N0	M0	FUNDUS_BODY	R0	64.08	Russia	Female	WHITE	0:LIVING	12.42	0:DiseaseFree	12.42	0	80	82	0	Low
+TCGA-BR-6705	Diffuse		0	Poorly_Cohesive	T3	N3	M0	FUNDUS_BODY	R0	68.65	Ukraine	Female	WHITE	1:DECEASED	24.35			0	72	77	0	Low
+TCGA-BR-6706	Mixed			Mixed	T3	N2	M0	GEJ_CARDIA	R0	63.12	Ukraine	Male	WHITE	1:DECEASED	17.02	1:Recurred/Progressed	12.22	1	75	77	0	Low
+TCGA-BR-6707	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	75.37	Ukraine	Male	WHITE	0:LIVING	11.1	0:DiseaseFree	11.1	1	80	75	0	Low
+TCGA-BR-6710	Intestinal	Tubular		Tubular	T2	N0	M0	GEJ_CARDIA	R0	41.93	Ukraine	Male	WHITE	0:LIVING	0.33			0	65	75	0	Low
+TCGA-BR-6801	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	70.19	Russia	Male	WHITE	0:LIVING	21.09	0:DiseaseFree	21.09	0	75	70	0	Low
+TCGA-BR-6802	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	65.48	Russia	Male	WHITE	0:LIVING	0.76			0	75	73	0	Low
+TCGA-BR-6803	Diffuse		1	Poorly_Cohesive	T3	N0	M0	FUNDUS_BODY	R0	54.07	Russia	Female	WHITE	0:LIVING	18.56	0:DiseaseFree	18.56	0	65	65	0	Low
+TCGA-BR-6852					T3	N0	M0	GEJ_CARDIA	R0	64.25	Ukraine	Female	WHITE	0:LIVING	13.9	0:DiseaseFree	13.9	0	90	95	0	Low
+TCGA-BR-7196	Diffuse		0	Poorly_Cohesive	T3	N3	M1	GEJ_CARDIA	R0	64.64	Ukraine	Male	WHITE	0:LIVING	0.1			1	60	40	17	Low
+TCGA-BR-7197	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	69.67	Ukraine	Male	WHITE	0:LIVING	7.89	0:DiseaseFree	7.89	0	70	45	10	High
+TCGA-BR-7703	Intestinal	Papillary		Papillary	T1b	N0	M0	FUNDUS_BODY	R0	81.34	Russia	Male	WHITE	0:LIVING	14.39	0:DiseaseFree	14.39	0	74	82	15	Low
+TCGA-BR-7707	Intestinal	Tubular		Tubular	T2	N0	M0	FUNDUS_BODY	R0	69.34	Russia	Female	WHITE	0:LIVING	15.61	0:DiseaseFree	15.61	0	60	60	0	Low
+TCGA-BR-7715	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	65.33	Russia	Male	WHITE	0:LIVING	15.41	0:DiseaseFree	15.41	0	72	77	3	High
+TCGA-BR-7716	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	62.5	Russia	Female	WHITE	0:LIVING	15.38	0:DiseaseFree	15.38	0	61	80	30	High
+TCGA-BR-7717	Intestinal	Tubular		Tubular	T3	N1	M0	GEJ_CARDIA	R0	63.25	Russia	Male	WHITE	0:LIVING	0.69			0	70	90	12	High
+TCGA-BR-7722	Mixed			Mixed	T4b	N2	M0	GEJ_CARDIA	R0	62.15	Ukraine	Male	WHITE	1:DECEASED	15.31	0:DiseaseFree	0.16	0	80	90	0	Low
+TCGA-BR-7723	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	59.79	Ukraine	Male	WHITE	0:LIVING	14.19	1:Recurred/Progressed	14.03	0	77	95	12	High
+TCGA-BR-7851	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	74.17	Russia	Male	WHITE	0:LIVING	12.42	0:DiseaseFree	12.42	0	57	59	0	Low
+TCGA-BR-7901	Intestinal	Tubular		Tubular	T3	N1	M0	GEJ_CARDIA	R0	74.01	Ukraine	Male	WHITE	1:DECEASED	2.69	1:Recurred/Progressed	2.23	0	60	50	0	High
+TCGA-BR-7957	Diffuse		0	Poorly_Cohesive	T4a	N3	M1	FUNDUS_BODY	R0	50.7	Russia	Female	WHITE	0:LIVING	0.69			0	60	45	0	Low
+TCGA-BR-7958	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	60.79	Russia	Male	WHITE	0:LIVING	12.75	0:DiseaseFree	12.75	1	60	90	0	Low
+TCGA-BR-7959	Intestinal	Mucinous		Mucinous	T4a	N1	M0	GEJ_CARDIA	R0	59.49	Russia	Male	WHITE	0:LIVING	18.69	0:DiseaseFree	18.69	0	70	66	0	High
+TCGA-BR-8058	Diffuse		0	Poorly_Cohesive	T3	N2	M0	ANTRUM	R0	53.82	Russia	Female	WHITE	0:LIVING	17.64			0	75	0	0	Low
+TCGA-BR-8059	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	72.48	Russia	Female	WHITE	1:DECEASED	14.42	0:DiseaseFree	0.82	0	62	57	5	High
+TCGA-BR-8077	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	58.62	Russia	Female	WHITE	0:LIVING	0.69			0	70	0	0	High
+TCGA-BR-8078	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	70.8	Russia	Female	WHITE	0:LIVING	12.25	0:DiseaseFree	12.25	0	85	0	0	Low
+TCGA-BR-8080	Diffuse		1	Poorly_Cohesive	T3	N3	M0	FUNDUS_BODY	R0	72.68	Russia	Female	WHITE	1:DECEASED	9.56	0:DiseaseFree	0.49	0	61	99	15	High
+TCGA-BR-8081	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	71.45	Russia	Female	WHITE	0:LIVING	10.87	0:DiseaseFree	10.87	0	85	79	7	Low
+TCGA-BR-8284	Mixed			Mixed	T3	N3	M0	ANTRUM	R0	72.62	Russia	Female	WHITE	1:DECEASED	8.05	0:DiseaseFree	0.72	0	75	80	0	Low
+TCGA-BR-8285	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	57.08	Russia	Female	WHITE	1:DECEASED	0.33	0:DiseaseFree	0.03	1	80	91	0	Low
+TCGA-BR-8286	Intestinal	Tubular		Tubular	T4a	N0	M0	ANTRUM	R0	49.19	Russia	Male	WHITE	0:LIVING	12.94	0:DiseaseFree	12.94	0	85	81	0	High
+TCGA-BR-8289	Intestinal	Tubular		Tubular	T3	N3	M1	FUNDUS_BODY	R0	57.08	Russia	Male	WHITE	1:DECEASED	2.66	0:DiseaseFree	0.26	0	85	85	0	High
+TCGA-BR-8291	Diffuse		0	Poorly_Cohesive	T3	N1	M0	ANTRUM	R0	61.74	Russia	Male	WHITE	0:LIVING	10.87	0:DiseaseFree	10.87	0	75	80	0	High
+TCGA-BR-8295	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	60.93	Russia	Female	WHITE	0:LIVING	1.54			0	85	85	0	High
+TCGA-BR-8296	Intestinal	Tubular		Tubular	T3	N2	M0	FUNDUS_BODY	R0	58.94	Russia	Female	WHITE	0:LIVING	1.48			0	80	80	0	High
+TCGA-BR-8297	Diffuse		0	Poorly_Cohesive	T4b	N3	M0	FUNDUS_BODY	R0	58.11	Russia	Male	WHITE	0:LIVING	0.76			0	62	30	0	High
+TCGA-BR-8360	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	66.79	Ukraine	Male	WHITE	0:LIVING	6.18	0:DiseaseFree	6.18	0	80	87	0	Low
+TCGA-BR-8361					T4b	N2	M0	FUNDUS_BODY	R0	71.18	Russia	Female	WHITE	0:LIVING	0.39			0	75	85	0	High
+TCGA-BR-8362	Intestinal				T3	N3	M0	FUNDUS_BODY	R0	65.15	Russia	Male	WHITE	0:LIVING	0.36			0	70	80	0	Low
+TCGA-BR-8363					T2	N0	M0	ANTRUM	R0	73.86	Russia	Female	WHITE	0:LIVING	0.33			0	57	62	0	Low
+TCGA-BR-8364	Diffuse		0	Poorly_Cohesive	T3	N2	M0	FUNDUS_BODY	R0	42.13	Russia	Female	WHITE	0:LIVING	22.14	0:DiseaseFree	22.14	0	55	50	0	Low
+TCGA-BR-8365	Diffuse		0	Poorly_Cohesive	T3	N0	M0	FUNDUS_BODY	R0	70.43	Ukraine	Female	WHITE	1:DECEASED	14.72			0	60	45	0	High
+TCGA-BR-8366	Mixed			Mixed	T3	N0	M0	FUNDUS_BODY	R0	80.48	Ukraine	Female	WHITE	0:LIVING	0.56			1	77	83	0	Low
+TCGA-BR-8367	Mixed			Mixed	T3	N3	M0	FUNDUS_BODY	R0	55.97	Ukraine	Male	WHITE	0:LIVING	12.81	0:DiseaseFree	12.81	0	77	70	0	Low
+TCGA-BR-8368					T2	N0	M0	FUNDUS_BODY	R0	84.53	Ukraine	Female	WHITE	0:LIVING	3.02	0:DiseaseFree	3.02	0	77	86	0	Low
+TCGA-BR-8369	Intestinal	Mucinous		Mucinous	T3	N3	M0	ANTRUM	R0	76.8	Ukraine	Female	WHITE	0:LIVING	13.37	1:Recurred/Progressed	13.11	0	75	77	0	High
+TCGA-BR-8370	Diffuse		1	Poorly_Cohesive	T3	N3	M0	GEJ_CARDIA	R0	64.71	Ukraine	Male	WHITE	0:LIVING	2.86	0:DiseaseFree	2.86	0	77	73	0	Low
+TCGA-BR-8371	Diffuse		0	Poorly_Cohesive	T3	N3	M0	GEJ_CARDIA	R0	62.65	Ukraine	Male	WHITE	1:DECEASED	11.5	1:Recurred/Progressed	11.43	0	57	65	0	Low
+TCGA-BR-8372	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	63.92	Russia	Male	WHITE	0:LIVING	19.12	0:DiseaseFree	19.12	0	80	80	0	Low
+TCGA-BR-8373	Intestinal	Papillary		Papillary	T4a	N1	M0	FUNDUS_BODY	R0	65.01	Ukraine	Female	WHITE	0:LIVING	14.09	0:DiseaseFree	14.09	0	80	0	0	High
+TCGA-BR-8380	Diffuse		1	Poorly_Cohesive	T4a	N3	M0	ANTRUM	R1	55.19	Ukraine	Male	WHITE	0:LIVING	0.23			0	68	95	10	Low
+TCGA-BR-8381					T3	N1	M0	FUNDUS_BODY	R0	51.59	Ukraine	Male	WHITE	0:LIVING	7.364302857			1	72	100	12	Low
+TCGA-BR-8382	Intestinal	Tubular		Tubular	T3	N3	M0	ANTRUM	R0	67.73	Ukraine	Female	WHITE	0:LIVING	15.51	0:DiseaseFree	15.51	0	63	88	3	Low
+TCGA-BR-8384	Diffuse		0	Poorly_Cohesive	T3	N2	M0	ANTRUM	R0	69.22	Ukraine	Male	WHITE	0:LIVING	3.25	0:DiseaseFree	3.25	0	60	50	20	Low
+TCGA-BR-8483	Intestinal	Tubular		Tubular	T3	N2	M0	ANTRUM	R0	59.5	Ukraine	Male	WHITE	0:LIVING	5.391721735			0	75	0	0	High
+TCGA-BR-8484	Intestinal	Tubular		Tubular	T4a	N1	M0	FUNDUS_BODY	R0	61.83	Russia	Male	WHITE	0:LIVING	0.69			0	75	92	19	High
+TCGA-BR-8485	Mixed			Mixed	T3	N3	M0	FUNDUS_BODY	R0	68.02	Russia	Female	WHITE	0:LIVING	0.3			0	72	67	17	High
+TCGA-BR-8486	Intestinal	Tubular		Tubular	T1b	N0	M0	FUNDUS_BODY	R0	90	Russia	Female	WHITE	0:LIVING	20.17	0:DiseaseFree	20.17	0	65	0	0	High
+TCGA-BR-8487	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	64.07	Ukraine	Female	WHITE	0:LIVING	0.39	0:DiseaseFree	0.39	0	90	99	2	Low
+TCGA-BR-8588	Diffuse		0	Poorly_Cohesive	T4a	N0	M0	FUNDUS_BODY	R0	55.24	Russia	Female	WHITE	0:LIVING	0.76			0	70	61	0	Low
+TCGA-BR-8589					T3	N1	M0	FUNDUS_BODY	R0	56.75	Russia	Male	WHITE	0:LIVING	15.77	0:DiseaseFree	15.77	1	75	69	0	Low
+TCGA-BR-8590	Mixed			Mixed	T3	N2	M0	FUNDUS_BODY	R0	62.8	Russia	Male	WHITE	0:LIVING	2.14			0	65	63	0	Low
+TCGA-BR-8591	Intestinal	Tubular		Tubular	T3	N3	M0	ANTRUM	R0	79.55	Russia	Male	WHITE	0:LIVING	13.6	0:DiseaseFree	13.6	0	75	76	0	Low
+TCGA-BR-8592	Diffuse		0	Poorly_Cohesive	T3	N1	M0	FUNDUS_BODY	R0	63.34	Russia	Female	WHITE	0:LIVING	0.39			0	60	53	0	Low
+TCGA-BR-8676	Intestinal				T3	N3	M0	ANTRUM	R0	59.19	Ukraine	Male	WHITE	0:LIVING	6.64			1	75	73	10	Low
+TCGA-BR-8677	Diffuse		0	Poorly_Cohesive	T3	N3	M0	ANTRUM	R0	74.53	Ukraine	Female	WHITE	0:LIVING	26.72847421			0	61	70	22	Low
+TCGA-BR-8678	Intestinal				T2	N0	M0	FUNDUS_BODY	R0	76.76	Russia	Male	WHITE	0:LIVING	0.16			0	85	83	10	High
+TCGA-BR-8679	Intestinal	Mucinous		Mucinous	T2	N0	M0	FUNDUS_BODY	R0	63.2	Russia	Female	WHITE	0:LIVING	0.16			0	67	70	7	High
+TCGA-BR-8680	Intestinal	Tubular		Tubular	T4a	N2	M1	ANTRUM	R0	45.55	Vietnam	Male	ASIAN	0:LIVING	15.38	0:DiseaseFree	15.38	0	70	73	15	Low
+TCGA-BR-8682	Intestinal	Tubular		Tubular	T4a	N0	M0	ANTRUM	R0	52.47	Vietnam	Male	ASIAN	0:LIVING	15.08	0:DiseaseFree	15.08	0	70	67	10	High
+TCGA-BR-8683	Intestinal	Tubular		Tubular	T4a	N2	M0	ANTRUM	R0	75.42	Vietnam	Male	ASIAN	1:DECEASED	9.59	0:DiseaseFree	0.33	0	64	71	10	High
+TCGA-BR-8686	Diffuse		0	Poorly_Cohesive	T4a	N1	M0	ANTRUM	R0	69.47	Vietnam	Male	ASIAN	0:LIVING	15.38	0:DiseaseFree	15.38	1	75	90	10	High
+TCGA-BR-8687	Intestinal	Papillary		Papillary	T3	N2	M0	GEJ_CARDIA	R0	67	Russia	Female	WHITE	0:LIVING	0.82			0	82	95	5	High
+TCGA-BR-8690	Intestinal				T3	N3	M0	GEJ_CARDIA	R0	54.36	Ukraine	Female	WHITE	0:LIVING	10.12	0:DiseaseFree	10.12	0	65	83	14	High
+TCGA-BR-A44T	Diffuse		0	Poorly_Cohesive	T3	N0	M0	GEJ_CARDIA	R0	53.13	Ukraine	Female	WHITE	0:LIVING	12.12	0:DiseaseFree	12.12	0	60	35	20	Low
+TCGA-BR-A44U	Mixed			Mixed	T3	N3	M0	ANTRUM	R0	70.03	Ukraine	Male	WHITE	0:LIVING	12.39	0:DiseaseFree	12.39	0	70	70	5	High
+TCGA-BR-A452	Intestinal	Tubular		Tubular	T4a	N1	M0	ANTRUM	R0	57.79	Vietnam	Male	ASIAN	0:LIVING	0.2	0:DiseaseFree	0.2	0	80	75	2	High
+TCGA-BR-A453	Diffuse		1	Poorly_Cohesive	T4a	N3	M1	ANTRUM	R0	51.98	Vietnam	Male	ASIAN	1:DECEASED	3.22	0:DiseaseFree	0.16	0	60	60	5	Low
+TCGA-BR-A4CQ	Intestinal	Tubular		Tubular	T4a	N1	M0	GEJ_CARDIA	R0	58.06	Ukraine	Male	WHITE	0:LIVING	34.98043857	0:DiseaseFree		0	75	45	2	High
+TCGA-BR-A4CR	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	70.28	Russia	Female	WHITE	0:LIVING	1.68	0:DiseaseFree	1.68	0	85	65	4	High
+TCGA-BR-A4CS	Intestinal				T3	N3	M0	FUNDUS_BODY	R0	77.24	Russia	Male	WHITE	0:LIVING	0.92	0:DiseaseFree	0.92	0	90	78	2	High
+TCGA-BR-A4IU	Diffuse		0	Poorly_Cohesive	T4a	N1	M0	ANTRUM	R0	34.5	Vietnam	Female	ASIAN	0:LIVING	13.01	0:DiseaseFree	13.01	0	80	60	0	Low
+TCGA-BR-A4IV	Diffuse		1	Poorly_Cohesive	T4a	N2	M0	ANTRUM	R0	47.95	Vietnam	Male	ASIAN	0:LIVING	12.78	0:DiseaseFree	12.78	0	65	100	0	Low
+TCGA-BR-A4IY	Intestinal	Tubular		Tubular	T4a	N0	M0	ANTRUM	R0	58.35	Vietnam	Male	ASIAN	0:LIVING	12.68	0:DiseaseFree	12.68	0	90	80	0	High
+TCGA-BR-A4IZ	Diffuse		1	Poorly_Cohesive	T4a	N2	M0	ANTRUM	R0	45.71	Vietnam	Female	ASIAN	0:LIVING	0.2			0	65	100	2	Low
+TCGA-BR-A4J1	Intestinal	Tubular		Tubular	T4a	N1	M0	ANTRUM	R0	63.7	Vietnam	Male	ASIAN	1:DECEASED	0.16			0	75	90	5	High
+TCGA-BR-A4J2	Diffuse		0	Poorly_Cohesive	T4a	N0	M0	ANTRUM	R0	70.89	Vietnam	Male	ASIAN	0:LIVING	13.57	0:DiseaseFree	13.57	0	70	95	5	Low
+TCGA-BR-A4J4	Diffuse		0	Poorly_Cohesive	T4a	N2	M0	ANTRUM	R0	39.58	Vietnam	Male	ASIAN	0:LIVING	0.2			1	80	53	6	Low
+TCGA-BR-A4J5	Intestinal	Mucinous		Mucinous	T4a	N1	M0	ANTRUM	R0	56.71	Vietnam	Male	ASIAN	0:LIVING	12.58	0:DiseaseFree	12.58	0	70	40	2	Low
+TCGA-BR-A4J6	Intestinal	Tubular		Tubular	T3	N0	M0	GEJ_CARDIA	R0	69.21	Ukraine	Female	WHITE	0:LIVING	0.657527041			0	75	45	4	Low
+TCGA-BR-A4J7	Intestinal	Mucinous		Mucinous	T4a	N0	M0	ANTRUM	R0	49.1	Vietnam	Male	ASIAN	0:LIVING	0.2			0	100	75	0	Low
+TCGA-BR-A4J8	Mixed			Mixed	T3	N3	M0	GEJ_CARDIA	R0	71.31	Ukraine	Female	WHITE	0:LIVING	13.51218069			0	70	26	4	High
+TCGA-BR-A4J9	Diffuse		0	Poorly_Cohesive	T3	N0	M0	ANTRUM	R0	55.01	Ukraine	Male	WHITE	0:LIVING	0.460268929			0	75	25	3	Low
+TCGA-BR-A4PD	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	72.1	Russia	Female	WHITE	0:LIVING	1.38	0:DiseaseFree	1.38	0	90	90	0	High
+TCGA-BR-A4PE	Intestinal	Tubular		Tubular	T2	N0	M0	GEJ_CARDIA	R0	68.41	Russia	Female	WHITE	0:LIVING	20.41621462			0	80	60	0	High
+TCGA-BR-A4PF	Intestinal				T4a	N2	M0	ANTRUM	R0	72.31	Russia	Male	WHITE	0:LIVING	0.72			0	60	50	0	High
+TCGA-BR-A4QI	Intestinal				T3	N0	M0	ANTRUM	R0	70.99	Ukraine	Female	WHITE	0:LIVING	13.6436861	0:DiseaseFree		0	75	100	2	High
+TCGA-BR-A4QL	Intestinal				T3	N3	M0	ANTRUM	R0	75.56	Ukraine	Female	WHITE	0:LIVING	11.57247592	0:DiseaseFree		0	60	70	0	Low
+TCGA-BR-A4QM	Diffuse		0	Poorly_Cohesive	T3	N2	M1	GEJ_CARDIA	R0	65.7	Ukraine	Male	WHITE	0:LIVING	5.128710918	0:DiseaseFree		0	65	100	3	Low
+TCGA-CD-5798	Diffuse		1	Poorly_Cohesive	T3	N0	M0	ANTRUM		82.99	Vietnam	Male	ASIAN	0:LIVING	2	0:DiseaseFree	2	0	70	47	0	Low
+TCGA-CD-5799	Diffuse		0	Poorly_Cohesive	T2	N1	M0	ANTRUM		45.27	Vietnam	Male	ASIAN	0:LIVING	2.56	0:DiseaseFree	2.56	0	80	76	0	High
+TCGA-CD-5800	Intestinal	Papillary		Papillary	T3	N0	M0	ANTRUM	R0	51	Vietnam	Female	ASIAN	0:LIVING	13.34	0:DiseaseFree	13.34	0	80	80	0	High
+TCGA-CD-5801	Intestinal				T4a	N2	M0	ANTRUM	R0	69	Vietnam	Male	ASIAN	1:DECEASED	12.68	0:DiseaseFree	12.68	1	80	90	0	High
+TCGA-CD-5802	Intestinal	Tubular		Tubular	T3	N0	M0	GEJ_CARDIA		58.4	Vietnam	Male	ASIAN	0:LIVING	13.34779893			0	75	80	0	High
+TCGA-CD-5803	Diffuse		0	Poorly_Cohesive	T3	N0	M0	ANTRUM		78.33	Vietnam	Female	ASIAN	0:LIVING	0.065752704			0	55	47	0	Low
+TCGA-CD-5804	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM	R0	90	Vietnam	Male	ASIAN	0:LIVING	0			0	75	85	0	High
+TCGA-CD-5813	Diffuse		1	Poorly_Cohesive	T3	N0	M0	FUNDUS_BODY		60.22	Vietnam	Male	ASIAN	0:LIVING	0.394516224			0	75	80	0	
+TCGA-CD-8524	Diffuse		0	Poorly_Cohesive	T3	N0	M0	ANTRUM	R0	61.45	Vietnam	Female	ASIAN	0:LIVING	12.75602459	0:DiseaseFree		0	80	85	0	High
+TCGA-CD-8525	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM	R0	82.15	Vietnam	Female	ASIAN	0:LIVING	12.59164283	0:DiseaseFree		0	67	80	0	High
+TCGA-CD-8526	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM	R0	73.49	Vietnam	Female	ASIAN	0:LIVING	12.52589013	0:DiseaseFree		0	67	90	0	High
+TCGA-CD-8527	Intestinal	Tubular		Tubular	T2	N1	M0	ANTRUM	R0	72.56	Vietnam	Female	ASIAN	0:LIVING	0.065752704	0:DiseaseFree		0	82	90	0	High
+TCGA-CD-8528	Diffuse		0	Poorly_Cohesive	T4a	N0	M0	ANTRUM	R0	43.77	Vietnam	Female	ASIAN	0:LIVING	12.32863201	0:DiseaseFree		0	87	92	0	High
+TCGA-CD-8529	Intestinal	Mucinous		Mucinous	T4b	N0	M1	ANTRUM	R0	65.65	Vietnam	Male	ASIAN	0:LIVING	12.29575566	0:DiseaseFree		0	65	75	0	High
+TCGA-CD-8530	Diffuse		0	Poorly_Cohesive	T3	N0	M0	FUNDUS_BODY	R0	52	Vietnam	Male	ASIAN	0:LIVING	12.39438472	0:DiseaseFree		0	85	90	0	High
+TCGA-CD-8531	Diffuse		0	Poorly_Cohesive	T3	N1	M0	FUNDUS_BODY	R0	66.95	Vietnam	Female	ASIAN	0:LIVING	12.59164283	0:DiseaseFree		0	85	88	0	Low
+TCGA-CD-8532	Intestinal	Tubular		Tubular	T3	N0	M0	GEJ_CARDIA	R0	52.8	Vietnam	Male	ASIAN	0:LIVING	0.098629056	0:DiseaseFree		0	55	85	0	Low
+TCGA-CD-8534	Diffuse		1	Poorly_Cohesive	T3	N0	M0	ANTRUM	R0	41.69	Vietnam	Male	ASIAN	0:LIVING	12.0656212	0:DiseaseFree		0	82	90	0	High
+TCGA-CD-8535	Intestinal	Tubular		Tubular	T3	N2	M0	FUNDUS_BODY	R0	59.03	Vietnam	Male	ASIAN	0:LIVING	12.8217773	0:DiseaseFree		0	85	73	0	High
+TCGA-CD-8536	Mixed			Mixed	T3	N0	M0	FUNDUS_BODY	R0	74.82	Vietnam	Male	ASIAN	0:LIVING	12.42726107	0:DiseaseFree		0	70	69	0	Low
+TCGA-CD-A486	Intestinal				T3	N0	M0	GEJ_CARDIA		68.12	Vietnam	Male	ASIAN	0:LIVING		0:DiseaseFree		0	75	100	3	High
+TCGA-CD-A487	Mixed			Mixed	T3	N1	M0	ANTRUM		51.18	Vietnam	Male	ASIAN	0:LIVING	12.29575566	0:DiseaseFree		0	80	80	1	High
+TCGA-CD-A489	Diffuse		0	Poorly_Cohesive	T3	N0	M0	ANTRUM		58.91	Vietnam	Male	ASIAN	0:LIVING	0.131505408	0:DiseaseFree		0	65	100	2	High
+TCGA-CD-A48A	Intestinal	Tubular		Tubular	T3	N0	M0	GEJ_CARDIA		57.06	Vietnam	Male	ASIAN	0:LIVING	12.42726107	0:DiseaseFree		0	85	100	1	High
+TCGA-CD-A48C	Intestinal				T3	N1	M0	ANTRUM		79.95	Vietnam	Female	ASIAN	0:LIVING	0.131505408	0:DiseaseFree		0	65	90	2	High
+TCGA-CD-A4MG	Intestinal	Mucinous		Mucinous	T3	N0	M0	GEJ_CARDIA		76.71	Vietnam	Male	ASIAN	0:LIVING	0.065752704	0:DiseaseFree		0	80	80	0	Low
+TCGA-CD-A4MH	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM		86.75	Vietnam	Female	ASIAN	0:LIVING	12.19712661	0:DiseaseFree		0	85	80	0	High
+TCGA-CD-A4MI	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM		62.21	Vietnam	Male	ASIAN	0:LIVING	0.098629056	0:DiseaseFree		0	70	60	0	Low
+TCGA-CD-A4MJ	Intestinal	Tubular		Tubular	T2	N0	M0	FUNDUS_BODY		60.05	Vietnam	Male	ASIAN	0:LIVING	12.62451918	0:DiseaseFree		0	75	60	0	Low
+TCGA-CG-4300	Intestinal	Tubular		Tubular	T4a	N3	M0	ANTRUM	R0	79.75	Germany	Male		1:DECEASED	20.01			0	73	95	3	High
+TCGA-CG-4301	Intestinal	Tubular		Tubular	T4b	N2	M1	GEJ_CARDIA	R2	75.34	Germany	Female		0:LIVING	3.02			0	75	76	3	High
+TCGA-CG-4304	Intestinal	Papillary		Papillary	T2	N0	M0	GEJ_CARDIA	R0	84.92	Germany	Male		0:LIVING	27.01			0	72	82	15	High
+TCGA-CG-4305	Intestinal	Tubular		Tubular	T2	N1	M0	ANTRUM	R0	69.26	Germany	Male		0:LIVING	15.93	1:Recurred/Progressed	15.01	0	75	76	15	Low
+TCGA-CG-4306	Intestinal	Mucinous		Mucinous	T4a	N2	M1	ANTRUM	R2	90	Germany	Male		1:DECEASED	1.02			0	77	89	10	Low
+TCGA-CG-4436	Intestinal	Papillary		Papillary	T2	N0	M0		R0	57.33	Germany	Male		0:LIVING	7.95	0:DiseaseFree	7.95	0	80	70	0	High
+TCGA-CG-4437	Intestinal	Tubular		Tubular	T3	N2	M0	GEJ_CARDIA	R0	83.42	Germany	Male		0:LIVING	8.05	0:DiseaseFree	8.05	0	60	65	0	High
+TCGA-CG-4438	Intestinal	Tubular		Tubular	T4a	N3	M0	ANTRUM	R0	56.33	Germany	Male		0:LIVING	54.01			0	80	85	0	High
+TCGA-CG-4440					T4a	N3	M1	FUNDUS_BODY	R2	68.92	Germany	Female		1:DECEASED	4.01			0	80	86	0	High
+TCGA-CG-4441	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	83.58	Germany	Male		1:DECEASED	14			0	70	70	11	High
+TCGA-CG-4442	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	85.83	Germany	Male		0:LIVING				0	75	76	0	Low
+TCGA-CG-4443	Intestinal	Tubular		Tubular	T1b	N0	M0	FUNDUS_BODY	R0	68.42	Germany	Male		0:LIVING	29.96			0	80	89	0	High
+TCGA-CG-4444	Intestinal	Mucinous		Mucinous	T3	N3	M0	FUNDUS_BODY	R0	76.42	Germany	Male		0:LIVING	47.02	0:DiseaseFree	47.02	0	77	95	0	High
+TCGA-CG-4449	Intestinal	Mucinous		Mucinous	T3	N2	M0	ANTRUM	R0	81.33	Germany	Male		0:LIVING	19.06	1:Recurred/Progressed	11.04	0	75	57	0	High
+TCGA-CG-4455	Intestinal	Mucinous		Mucinous	T3	N1	M0	GEJ_CARDIA	R0	72.34	Germany	Male		0:LIVING	12.02	0:DiseaseFree	12.02	0	82	95	0	High
+TCGA-CG-4462	Diffuse		1	Poorly_Cohesive	T3	N3	M1	ANTRUM	R2	72.58	Germany	Female		1:DECEASED				0	70	82	0	Low
+TCGA-CG-4465	Diffuse		0	Poorly_Cohesive	T4b	N3	M1	ANTRUM	R2	69.09	Germany	Female		1:DECEASED	8.97			0	70	80	0	Low
+TCGA-CG-4466	Intestinal	Papillary		Papillary	T2	N0	M0	FUNDUS_BODY	R0	81.42	Germany	Female		0:LIVING	18.92	0:DiseaseFree	18.92	0	75	82	0	High
+TCGA-CG-4469	Intestinal	Tubular		Tubular	T3	N3	M0		R1	70.08	Germany	Male		1:DECEASED	7.06			0	75	87	0	High
+TCGA-CG-4472	Intestinal	Tubular		Tubular	T4a	N2	M0	ANTRUM	R0	49.58	Germany	Male		0:LIVING	11.99	1:Recurred/Progressed	4.01	0	75	85	0	High
+TCGA-CG-4474	Diffuse		0	Poorly_Cohesive	T4a	N2	M1	ANTRUM	R2	67.59	Germany	Female		0:LIVING				0	70	80	0	Low
+TCGA-CG-4475	Intestinal	Mucinous		Mucinous	T3	N1	M0	FUNDUS_BODY	R0	76.84	Germany	Male		0:LIVING	22.97	0:DiseaseFree	22.97	0	70	67	0	High
+TCGA-CG-4476	Intestinal	Tubular		Tubular	T4b	N3	M0	FUNDUS_BODY	R0	69.83	Germany	Male		0:LIVING				0	75	70	0	High
+TCGA-CG-4477	Intestinal	Tubular		Tubular	T2	N0	M0	GEJ_CARDIA	R0	58.66	Germany	Female		0:LIVING	30.95	1:Recurred/Progressed	11.99	0	75	74	0	High
+TCGA-CG-5717	Diffuse		1	Poorly_Cohesive	T3	N2	M0	GEJ_CARDIA	R0	58.75	Germany	Male		1:DECEASED	6.93	1:Recurred/Progressed	3.94	0	77	67	0	Low
+TCGA-CG-5718	Intestinal	Tubular		Tubular	T3	N2	M0	FUNDUS_BODY	R0	78.75	Germany	Female		1:DECEASED	35.98			0	77	75	0	High
+TCGA-CG-5719	Intestinal	Tubular		Tubular	T4b	N0	M1	FUNDUS_BODY	R0	54.66	Germany	Female		0:LIVING	1.019166913			0	70	80	0	High
+TCGA-CG-5720	Diffuse		0	Poorly_Cohesive	T3	N0	M0	GEJ_CARDIA	R0	71.66	Germany	Male		1:DECEASED				0	75	84	0	Low
+TCGA-CG-5721	Intestinal	Tubular		Tubular	T4b	N1	M0	FUNDUS_BODY	R0	58.16	Germany	Male		0:LIVING	5.98	0:DiseaseFree	5.98	0	80	76	0	Low
+TCGA-CG-5722	Diffuse		0	Poorly_Cohesive	T4a	N3	M1	FUNDUS_BODY	R2	67	Germany	Female		0:LIVING	1			1	70	77	0	Low
+TCGA-CG-5723	Diffuse		0	Poorly_Cohesive	T3	N1	M0	GEJ_CARDIA	R0	83.17	Germany	Male		0:LIVING	105			0	75	52	0	Low
+TCGA-CG-5724	Mixed			Mixed	T4a	N3	M1	ANTRUM	R2	59.58	Germany	Male		1:DECEASED	11.01	1:Recurred/Progressed	2.99	0	75	53	0	High
+TCGA-CG-5726	Intestinal	Papillary		Papillary	T1b	N0	M0	ANTRUM	R0	73.92	Germany	Male		1:DECEASED	27.93			0	75	31	0	Low
+TCGA-CG-5727	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	66.5	Germany	Male		0:LIVING	79.02	0:DiseaseFree	79.02	0	80	62	0	Low
+TCGA-CG-5728	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	88.41	Germany	Female		0:LIVING	65.05			0	70	60	0	Low
+TCGA-CG-5730	Intestinal	Tubular		Tubular	T3	N2	M1	FUNDUS_BODY	R2	80.58	Germany	Female		0:LIVING	4.01			0	80	71	0	High
+TCGA-CG-5732	Intestinal	Papillary		Papillary	T3	N3	M0	GEJ_CARDIA	R0	66.74	Germany	Male		1:DECEASED	69	1:Recurred/Progressed	64.03	0	75	88	0	High
+TCGA-CG-5733	Intestinal	Mucinous		Mucinous	T3	N3	M0	ANTRUM	R0	83.92	Germany	Female		1:DECEASED	21.06	1:Recurred/Progressed	14	0	80	82	0	Low
+TCGA-CG-5734	Intestinal	Tubular		Tubular	T4a	N2	M0	FUNDUS_BODY	R0	68.66	Germany	Male		1:DECEASED	7.98			0	67	70	0	Low
+TCGA-D7-5577	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	53.85	Poland	Female	WHITE	0:LIVING	12.58	1:Recurred/Progressed	12.58	1	77	82	0	Low
+TCGA-D7-5578	Intestinal	Tubular		Tubular	T2	N2	M0	FUNDUS_BODY	R0	80.46	Poland	Male	WHITE	0:LIVING	12.65	0:DiseaseFree	12.65	0	40	37	0	High
+TCGA-D7-5579	Diffuse		0	Poorly_Cohesive	T3	N3	M0	FUNDUS_BODY	R1	74.4	Poland	Male	WHITE	0:LIVING	11.99	0:DiseaseFree	11.99	0	77	77	0	High
+TCGA-D7-6518	Diffuse		1	Poorly_Cohesive	T3	N3	M0	GEJ_CARDIA	R1	75.55	Poland	Male	WHITE	0:LIVING	19.12	0:DiseaseFree	19.12	0	77	80	0	High
+TCGA-D7-6519	Intestinal	Tubular		Tubular	T2	N1	M0	GEJ_CARDIA	R0	64.1	Poland	Female	WHITE	0:LIVING	19.81	1:Recurred/Progressed	13.37	0	82	83	0	High
+TCGA-D7-6520	Intestinal	Tubular		Tubular	T3	N3	M0	ANTRUM	R0	53.3	Poland	Male	WHITE	0:LIVING	18.83	1:Recurred/Progressed	1.51	0	82	82	0	High
+TCGA-D7-6521	Diffuse		0	Poorly_Cohesive	T3	N3	M0	FUNDUS_BODY	R0	65.1	Poland	Male	WHITE	0:LIVING	18.53	1:Recurred/Progressed	6.31	0	75	87	0	High
+TCGA-D7-6522	Diffuse		1	Poorly_Cohesive	T2	N0	M0	ANTRUM	R0	58.77	Poland	Male	WHITE	0:LIVING	18.6	0:DiseaseFree	18.6	0	70	62	0	Low
+TCGA-D7-6524	Diffuse		0	Poorly_Cohesive	T3	N2	M0	ANTRUM	R1	53.47	Poland	Male	WHITE	0:LIVING	17.84	1:Recurred/Progressed	17.84	0	77	82	0	Low
+TCGA-D7-6525	Intestinal	Tubular		Tubular	T3	N2	M0	GEJ_CARDIA	R0	58.11	Poland	Male	WHITE	1:DECEASED	13.34	1:Recurred/Progressed	5.62	0	77	73	0	High
+TCGA-D7-6526	Intestinal	Tubular		Tubular	T3	N2	M0	ANTRUM	R0	67.02	Poland	Female	WHITE	0:LIVING	17.18	0:DiseaseFree	17.18	0	77	77	0	High
+TCGA-D7-6527	Intestinal	Papillary		Papillary	T2	N1	M0	GEJ_CARDIA	R0	62.4	Poland	Male	WHITE	1:DECEASED	10.25	1:Recurred/Progressed	2.46	0	75	81	0	High
+TCGA-D7-6528	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	70.68	Poland	Female	WHITE	0:LIVING	15.21	0:DiseaseFree	15.21	0	75	55	0	High
+TCGA-D7-6815	Intestinal	Tubular		Tubular	T2	N2	M0	FUNDUS_BODY	R0	70.67	Poland	Female	WHITE	0:LIVING	15.28	0:DiseaseFree	15.28	0	67	76	0	High
+TCGA-D7-6817	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	63.36	Poland	Male	WHITE	0:LIVING	13.24	0:DiseaseFree	13.24	0	65	83	0	High
+TCGA-D7-6818	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	53.09	Poland	Male	WHITE	0:LIVING	10.55	1:Recurred/Progressed	9.13	0	70	86	0	High
+TCGA-D7-6820	Intestinal	Tubular		Tubular	T2	N2	M0	FUNDUS_BODY	R0	64.3	Poland	Male	WHITE	0:LIVING	11.6	0:DiseaseFree	11.6	0	70	78	0	High
+TCGA-D7-6822	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	77.25	Poland	Male	WHITE	0:LIVING	11.63	0:DiseaseFree	11.63	0	67	75	0	High
+TCGA-D7-8570	Intestinal				T3	N3	M0	GEJ_CARDIA	R0	44.22	Poland	Male	WHITE	0:LIVING	24.35	0:DiseaseFree	24.35	1	79	100	15	High
+TCGA-D7-8572	Intestinal	Papillary		Papillary	T2	N0	M0	FUNDUS_BODY	R0	57.14	Poland	Male	WHITE	0:LIVING	16.95	0:DiseaseFree	16.95	0	75	74	17	Low
+TCGA-D7-8573	Intestinal	Tubular		Tubular	T3	N0	M0	FUNDUS_BODY	R0	57.39	Poland	Male	WHITE	0:LIVING	19.45	0:DiseaseFree	19.45	1	80	93	9	High
+TCGA-D7-8574	Diffuse		0	Poorly_Cohesive	T2	N3	M0	ANTRUM	R0	72.79	Poland	Male	WHITE	0:LIVING	17.35	0:DiseaseFree	17.35	0	65	70	20	Low
+TCGA-D7-8575	Mixed			Mixed	T3	N2	M0	FUNDUS_BODY	R0	75.87	Poland	Male	WHITE	0:LIVING	0.2	0:DiseaseFree	0.2	0	85	99	10	High
+TCGA-D7-8576	Mixed			Mixed	T3	N3	M0	ANTRUM	R0	54.8	Poland	Female	WHITE	1:DECEASED	14.62	1:Recurred/Progressed	6.67	0	75	100	5	High
+TCGA-D7-8578	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	72.88	Poland	Male	WHITE	0:LIVING	4.3	0:DiseaseFree	4.3	0	62	75	20	High
+TCGA-D7-8579	Intestinal				T2	N2	M0	ANTRUM	R0	66.04	Poland	Female	WHITE	0:LIVING	4.14	0:DiseaseFree	4.14	0	63	100	15	Low
+TCGA-D7-A4YT	Intestinal	Tubular		Tubular	T2	N0	M0	GEJ_CARDIA	R0	56.79	Poland	Male	WHITE	0:LIVING	12.45	0:DiseaseFree	12.45	0	80	60	3	High
+TCGA-D7-A4YU	Intestinal	Tubular		Tubular	T3	N3	M0	FUNDUS_BODY	R0	73.32	Poland	Male	WHITE	0:LIVING	16.69	0:DiseaseFree	16.69	0	60	40	25	High
+TCGA-D7-A4YV	Diffuse		1	Poorly_Cohesive	T3	N1	M0	ANTRUM	R0	69.6	Poland	Female	WHITE	0:LIVING	5.91	0:DiseaseFree	5.91	0	70	65	15	Low
+TCGA-D7-A4YX	Intestinal	Papillary		Papillary	T3	N1	M0	FUNDUS_BODY	R0	63.65	Poland	Male	WHITE	0:LIVING	14.75	0:DiseaseFree	14.75	1	65	60	20	Low
+TCGA-D7-A4YY	Intestinal	Tubular		Tubular	T3	N3	M0	ANTRUM	R0	61.02	Poland	Male	WHITE	0:LIVING	3.42	0:DiseaseFree	3.42	0	70	65	10	Low
+TCGA-D7-A4Z0	Diffuse		1	Poorly_Cohesive	T2	N2	M0	ANTRUM	R0	60.58	Poland	Female	WHITE	0:LIVING	3.91	0:DiseaseFree	3.91	0	60	25	15	Low
+TCGA-EQ-5647	Intestinal	Tubular		Tubular	T4a	N3	M1	ANTRUM	R2	86.06	United_States	Female	WHITE	1:DECEASED	0.53	0:DiseaseFree	0.53	0	85	70	0	High
+TCGA-EQ-8122	Intestinal	Papillary		Papillary	T3	N1	M0	ANTRUM		71.97	United_States	Female	WHITE	1:DECEASED	7.98			0	70	62	6	High
+TCGA-EQ-A4SO	Intestinal	Papillary		Papillary	T4b	N1	M0	ANTRUM	R0	70.9	United_States	Male	WHITE	0:LIVING	14.95	0:DiseaseFree	14.95	0	94	100	0	High
+TCGA-F1-6177	Intestinal	Tubular		Tubular	T1b	N1	M0	ANTRUM	R0	90	United_States	Male	BLACK_OR_AFRICAN_AMERICAN	0:LIVING	5.62	0:DiseaseFree	5.62	0	80	88	0	Low
+TCGA-F1-6874	Intestinal	Tubular		Tubular	T2	N0	M0	GEJ_CARDIA	R0	79.63	United_States	Male	WHITE	0:LIVING	13.54	0:DiseaseFree	13.54	0	82	82	2	Low
+TCGA-F1-6875	Intestinal	Tubular		Tubular	T2	N0	M0	ANTRUM	R0	79.97	United_States	Male	BLACK_OR_AFRICAN_AMERICAN	1:DECEASED	72.18	0:DiseaseFree		0	85	99	2	High
+TCGA-F1-A448	Intestinal	Mucinous		Mucinous	T3	N3	M0	ANTRUM	R0	70.76	United_States	Male	WHITE	0:LIVING	19.42	0:DiseaseFree	19.42	0	70	100	2	Low
+TCGA-FP-7735	Intestinal	Papillary		Papillary	T2	N0	M0	FUNDUS_BODY	R0	77.25	United_States	Male	BLACK_OR_AFRICAN_AMERICAN	1:DECEASED	3.25	0:DiseaseFree	0.16	0	65	85	0	High
+TCGA-FP-7829	Intestinal	Tubular		Tubular	T3	N1	M0	GEJ_CARDIA	R0	69.91	United_States	Male	WHITE	0:LIVING	19.52	0:DiseaseFree	19.52	0	70	90	0	High
+TCGA-FP-7916	Mixed			Mixed	T4a	N3	M1	ANTRUM		78	United_States	Male	ASIAN	1:DECEASED	11.01	0:DiseaseFree		1	55	65	0	High
+TCGA-FP-7998					T4a	N3	M0	FUNDUS_BODY	R0	77.49	United_States	Male	WHITE	0:LIVING	18.69	0:DiseaseFree	18.69	1	22	0	0	Low
+TCGA-FP-8099	Mixed			Mixed	T3	N0	M0	GEJ_CARDIA	R0	79.75	United_States	Male	WHITE	0:LIVING	15.93	0:DiseaseFree	15.93	0	65	98	15	High
+TCGA-FP-8209	Intestinal	Tubular		Tubular	T2	N0	M0	ANTRUM	R0	49.75	United_States	Male	WHITE	1:DECEASED	59.01	1:Recurred/Progressed	55.06	0	30	30	0	Low
+TCGA-FP-8210	Diffuse		0	Poorly_Cohesive	T4a	N2	M0	ANTRUM		48.08	United_States	Male	ASIAN	1:DECEASED	5.03	0:DiseaseFree		0	60	49	0	Low
+TCGA-FP-8211	Intestinal	Tubular		Tubular	T3	N1	M0	GEJ_CARDIA	R1	62.83	United_States	Male	WHITE	0:LIVING	12.22	0:DiseaseFree	12.22	0	60	73	0	High
+TCGA-FP-8631	Intestinal	Tubular		Tubular	T3	N2	M0	GEJ_CARDIA	R0	68.17	United_States	Male	WHITE	0:LIVING	0.56	0:DiseaseFree	0.56	0	70	100	15	High
+TCGA-FP-A4BE	Intestinal	Tubular		Tubular	T4a	N0	M0	FUNDUS_BODY	R0	55.16	United_States	Male	BLACK_OR_AFRICAN_AMERICAN	0:LIVING	10.09	0:DiseaseFree	10.09	0	80	93	2	
+TCGA-FP-A4BF	Mixed			Mixed	T3	N2	M0	GEJ_CARDIA	R1	68.53	United_States	Male	WHITE	1:DECEASED	4.21	1:Recurred/Progressed	3.91	0	70	100	5	High
+TCGA-HF-7132	Intestinal	Mucinous		Mucinous	T3	N1	M0	ANTRUM	R0		Canada	Male		0:LIVING	77.29230365	0:DiseaseFree		0	67	81	15	Low
+TCGA-HF-7133	Intestinal	Mucinous		Mucinous	T3	N3	M0	GEJ_CARDIA	R1		Canada	Female		0:LIVING	63.05684321	0:DiseaseFree		0	60	99	20	High
+TCGA-HF-7136	Intestinal	Tubular		Tubular	T4a	N1	M0	GEJ_CARDIA	R1		Canada	Male		0:LIVING		1:Recurred/Progressed		0	70	98	10	High
+TCGA-HJ-7597	Mixed			Mixed	T3	N0	M0	FUNDUS_BODY	R0	71.91	United_States	Female	WHITE	1:DECEASED	25.53	1:Recurred/Progressed	6.67	0	62	60	20	High
+TCGA-HU-8243	Intestinal	Tubular		Tubular	T4a	N3	M0	FUNDUS_BODY	R0	66.22	Korea_South	Male	ASIAN	1:DECEASED	5.91			0	75	90	0	High
+TCGA-HU-8245	Intestinal	Papillary		Papillary	T3	N0	M0	FUNDUS_BODY	R0	72.61	Korea_South	Male	ASIAN	0:LIVING	12.58	0:DiseaseFree	12.58	0	85	90	0	High
+TCGA-HU-8249	Intestinal	Tubular		Tubular	T3	N2	M0	FUNDUS_BODY	R0	76.69	Korea_South	Male	ASIAN	0:LIVING	14.16	0:DiseaseFree	14.16	0	80	90	0	High
+TCGA-HU-8602	Intestinal				T4a	N0	M0	ANTRUM	R0	58.92	Korea_South	Female	ASIAN	0:LIVING	11.4	0:DiseaseFree	11.4	0	70	95	0	Low
+TCGA-HU-8604	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	82.62	Korea_South	Female	ASIAN	0:LIVING	12.09	0:DiseaseFree	12.09	0	60	75	0	High
+TCGA-HU-8608	Intestinal				T4a	N2	M0	FUNDUS_BODY	R0	70.61	Korea_South	Male	ASIAN	0:LIVING	10.61	1:Recurred/Progressed	9.07	1	60	95	0	Low
+TCGA-HU-8610	Intestinal	Tubular		Tubular	T1b	N0	M0	FUNDUS_BODY	R0	75.55	Korea_South	Male	ASIAN	0:LIVING	0.76	0:DiseaseFree	0.76	0	60	60	0	High
+TCGA-HU-A4G2	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM	R0	45.97	Korea_South	Male	ASIAN	0:LIVING	15.18	0:DiseaseFree	15.18	1	80	80	3	Low
+TCGA-HU-A4G3	Intestinal	Tubular		Tubular	T2	N2	M0	ANTRUM	R0	54.93	Korea_South	Male	ASIAN	0:LIVING	5.59	0:DiseaseFree	5.59	0	85	87	1	Low
+TCGA-HU-A4G6	Intestinal	Tubular		Tubular	T1b	N0	M0	GEJ_CARDIA	R0	74.49	Korea_South	Male	ASIAN	0:LIVING	12.29	0:DiseaseFree	12.29	1	83	99	2	Low
+TCGA-HU-A4G8	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM		71.88	Korea_South	Female	ASIAN	0:LIVING	11.83	0:DiseaseFree	11.83	0	65	65	5	Low
+TCGA-HU-A4G9	Intestinal	Tubular		Tubular	T1a	N0	M0	FUNDUS_BODY	R0	67.77	Korea_South	Female	ASIAN	0:LIVING	24.18	0:DiseaseFree	24.18	0	85	94	2	Low
+TCGA-HU-A4GC	Intestinal	Tubular		Tubular	T4a	N2	M0	ANTRUM	R0	74.65	Korea_South	Male	ASIAN	0:LIVING	3.25	0:DiseaseFree	3.25	0	65	65	5	High
+TCGA-HU-A4GD	Intestinal	Tubular		Tubular	T3	N1	M0	FUNDUS_BODY	R0	56.67	Korea_South	Male	ASIAN	0:LIVING	22.74	1:Recurred/Progressed	13.21	0	80	80	4	High
+TCGA-HU-A4GF	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	69.06	Korea_South	Male	ASIAN	0:LIVING	25.79	0:DiseaseFree	25.79	0	75	100	3	High
+TCGA-HU-A4GH	Intestinal	Papillary		Papillary	T1b	N0	M0	FUNDUS_BODY	R0	75.22	Korea_South	Male	ASIAN	0:LIVING	11.76	0:DiseaseFree	11.76	0	70	85	5	High
+TCGA-HU-A4GN	Intestinal	Tubular		Tubular	T2	N1	M0	ANTRUM	R0	61.02	Korea_South	Male	ASIAN	0:LIVING	29.96	0:DiseaseFree	29.96	0	65	100	15	Low
+TCGA-HU-A4GP	Intestinal	Tubular		Tubular	T2	N1	M0	ANTRUM	R0	62.18	Korea_South	Female	ASIAN	0:LIVING	8.31	0:DiseaseFree	8.31	0	20	15	100	High
+TCGA-HU-A4GQ	Intestinal	Tubular		Tubular	T4b	N2	M0	ANTRUM	R0	71.73	Korea_South	Male	ASIAN	1:DECEASED	0.1	0:DiseaseFree		0	80	70	0	Low
+TCGA-HU-A4GT	Intestinal	Tubular		Tubular	T3	N0	M0	ANTRUM	R0	71.82	Korea_South	Female	ASIAN	0:LIVING	6.51	0:DiseaseFree	6.51	0	80	70	0	Low
+TCGA-HU-A4GU	Intestinal	Tubular		Tubular	T3	N1	M0	ANTRUM	R0	73.99	Korea_South	Male	ASIAN	0:LIVING	6.24	0:DiseaseFree	6.24	0	90	85	0	High
+TCGA-HU-A4GX	Intestinal	Tubular		Tubular	T4b	N2	M0	FUNDUS_BODY	R0	70.95	Korea_South	Female	ASIAN	0:LIVING	10.19	0:DiseaseFree	10.19	0	80	61	7	Low
+TCGA-HU-A4GY	Diffuse		0	Poorly_Cohesive	T4	N1	M0	ANTRUM	R0	76.97	Korea_South	Female	ASIAN	0:LIVING	0.26	0:DiseaseFree	0.26	0	70	45	5	Low
+TCGA-HU-A4H0	Diffuse		0	Poorly_Cohesive	T4a	N3	M0	FUNDUS_BODY	R0	72.05	Korea_South	Male	ASIAN	0:LIVING	2.1	0:DiseaseFree	2.1	1	100	95	0	High
+TCGA-HU-A4H2	Intestinal	Tubular		Tubular	T3	N3	M0	ANTRUM	R0	58.85	Korea_South	Female	ASIAN	0:LIVING	13.14	0:DiseaseFree	13.14	0	60	43	15	High
+TCGA-HU-A4H3	Diffuse		1	Poorly_Cohesive	T4a	N3	M0	FUNDUS_BODY	R0	56.92	Korea_South	Female	ASIAN	0:LIVING	19.55	1:Recurred/Progressed	13.67	0	75	38	15	Low
+TCGA-HU-A4H4	Intestinal	Tubular		Tubular	T2	N2	M0	ANTRUM	R0	53.84	Korea_South	Female	ASIAN	0:LIVING	17.87	0:DiseaseFree	17.87	0	75	60	3	High
+TCGA-HU-A4H5	Intestinal	Papillary		Papillary	T2	N0	M0	FUNDUS_BODY	R0	71.82	Korea_South	Male	ASIAN	0:LIVING	5.78	0:DiseaseFree	5.78	0	70	30	8	High
+TCGA-HU-A4H6	Intestinal	Tubular		Tubular	T3	N2	M0	ANTRUM	R0	72.4	Korea_South	Female	ASIAN	0:LIVING	4.7			0	80	100	3	High
+TCGA-HU-A4H8	Intestinal	Tubular		Tubular	T1b	N1	M0	ANTRUM	R0	77.46	Korea_South	Male	ASIAN	0:LIVING	8.87	0:DiseaseFree	8.87	0	75	80	2	Low
+TCGA-HU-A4HD	Intestinal	Tubular		Tubular	T3	N2	M0	ANTRUM	R0	73.1	Korea_South	Male	ASIAN	0:LIVING	26.58	0:DiseaseFree	26.58	0	70	80	3	High
+TCGA-IN-7806	Intestinal	Tubular		Tubular	T3	N1	M0	GEJ_CARDIA	R0	50.39	United_States	Male	WHITE	0:LIVING	21.19			0	67	74	20	High
+TCGA-IN-7808	Diffuse		1	Poorly_Cohesive	T4a	N3	M1	GEJ_CARDIA		59.05	United_States	Male	WHITE	1:DECEASED	3.45			0	77	95	15	High
+TCGA-IN-8462	Mixed			Mixed	T2	N1	M0	GEJ_CARDIA	R0	80.06	United_States	Male	WHITE	0:LIVING	17.22	1:Recurred/Progressed	7.29	0	77	72	0	High
+TCGA-IN-8663	Diffuse		0	Poorly_Cohesive	T2	N3	M0	GEJ_CARDIA	R0	68.92	United_States	Male	WHITE	1:DECEASED	0.66	0:DiseaseFree		0	87	92	0	High
+TCGA-IP-7968	Intestinal	Tubular		Tubular	T3	N2	M0	GEJ_CARDIA	R0	74.24	United_States	Male	WHITE	0:LIVING	2.5			0	80	100	9	High

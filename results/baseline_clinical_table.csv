@@ -1,0 +1,20 @@
+Variable,Category,GS (N=58),CIN (N=147),All Patients (N=205),p-value,Statistical Test
+"Age (years), Median (IQR)",,59.4 (53.5-68.4),68.4 (58.9-75.2),65.7 (57.5-72.8),0.0000,Mann-Whitney U
+Sex,,,,,0.7137,Chi-Square
+,Male,36 (62.1%),97 (66.0%),133 (64.9%),,
+,Female,22 (37.9%),50 (34.0%),72 (35.1%),,
+Lauren Classification,,,,,0.0000,Chi-Square
+,Intestinal,15 (25.9%),118 (80.3%),133 (64.9%),,
+,Diffuse,40 (69.0%),18 (12.2%),58 (28.3%),,
+,Mixed,3 (5.2%),10 (6.8%),13 (6.3%),,
+,Unknown,0 (0.0%),1 (0.7%),1 (0.5%),,
+AJCC Pathological Stage,,,,,0.6132,Chi-Square
+,Stage III,22 (37.9%),60 (40.8%),82 (40.0%),,
+,Stage II,23 (39.7%),56 (38.1%),79 (38.5%),,
+,Stage I,4 (6.9%),16 (10.9%),20 (9.8%),,
+,Stage IV,6 (10.3%),9 (6.1%),15 (7.3%),,
+Anatomic Tumor Location,,,,,0.2607,Chi-Square
+,ANTRUM,28 (48.3%),49 (33.3%),77 (37.6%),,
+,FUNDUS_BODY,18 (31.0%),57 (38.8%),75 (36.6%),,
+,GEJ_CARDIA,11 (19.0%),37 (25.2%),48 (23.4%),,
+,Unknown,1 (1.7%),4 (2.7%),5 (2.4%),,

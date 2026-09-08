@@ -40,8 +40,12 @@ ENV/
 .RData
 .Rproj.user/
 
-# Large Datasets & Raw Genomic / Clinical Data
-stad_tcga_pub/
+# Large Datasets & Raw Genomic / Clinical Data (>50MB files)
+stad_tcga_pub/data_mutations.txt
+stad_tcga_pub/data_mrna_seq_v2_rsem_zscores_ref_all_samples.txt
+stad_tcga_pub/data_mrna_seq_v2_rsem.txt
+stad_tcga_pub/data_linear_cna.txt
+stad_tcga_pub/data_cna.txt
 data/
 raw_data/
 *.seg
@@ -54,8 +58,6 @@ raw_data/
 
 # Intermediate / Generated artifacts
 outputs/
-results/
-figures/
 checkpoints/
 
 # OS / IDE generated files
