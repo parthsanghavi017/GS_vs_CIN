@@ -46,6 +46,7 @@ stad_tcga_pub/data_mrna_seq_v2_rsem_zscores_ref_all_samples.txt
 stad_tcga_pub/data_mrna_seq_v2_rsem.txt
 stad_tcga_pub/data_linear_cna.txt
 stad_tcga_pub/data_cna.txt
+stad_tcga_pub/*methylation*
 data/
 raw_data/
 *.seg

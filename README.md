@@ -18,7 +18,7 @@ While **EBV** and **MSI** subtypes display distinct hypermutation phenotypes, hi
 - **Genomically Stable (GS)**: Enriched for diffuse histological variants, frequent *CDH1* and *RHOA* mutations, *CLDN18-ARHGAP* fusions, and low somatic copy-number alterations.
 - **Chromosomal Instability (CIN)**: Characterized by marked aneuploidy, recurrent focal amplifications in receptor tyrosine kinases (e.g., *HER2/ERBB2*, *EGFR*, *MET*, *FGFR2*) and cell cycle regulators (e.g., *CCNE1*, *CCND1*, *CDK6*), and frequent *TP53* mutations.
 
-This project focuses on a deep, comparative multi-omics and clinical investigation comparing **GS vs. CIN** subtypes, uncovering mechanistic drivers, survival disparities, epigenetic landscapes, transcription factor regulatory networks, and training robust machine learning models to classify and distinguish these subtypes from multi-modal molecular features.
+This project focuses on a deep, comparative multi-omics and clinical investigation comparing **GS vs. CIN** subtypes, uncovering mechanistic drivers, survival disparities, transcriptomic networks, transcription factor regulatory activity, and training robust machine learning models to classify and distinguish these subtypes from multi-modal molecular features.
 
 ---
 
@@ -36,21 +36,22 @@ flowchart TD
         E --> F[Log-Rank Test p-value & Hazard / Log Ratio Calculation]
     end
 
-    subgraph Phase2["Phase 2: Multi-Omics Feature Extraction & TF Profiling"]
-        G[DNA Methylation] --> H[Differentially Methylated Regions DMRs]
-        I[mRNA Expression] --> J[Differential Gene Expression DGE]
-        I --> K[decoupleR + DoRothEA: TF Activity Inference]
-        L[Copy Number Alteration] --> M[GISTIC 2.0 Peak / Segment Analysis]
-        N[Somatic Mutations] --> O[COSMIC Mutational Signatures Deconvolution]
-        H & J & K & M & O --> P[Integrated Multi-Omics Feature Matrix]
+    subgraph Phase2["Phase 2: Transcriptomic DGE, GSEA, TF Activity, CNV, SBS & SV Fusions"]
+        G[TCGABiolinks: STAR Unstranded Counts] --> H[DESeq2: Differential Gene Expression DGE]
+        H --> I[GSEA: Hallmark & Pathway Enrichment]
+        H --> J[decoupleR + DoRothEA: TF Regulatory Activity Inference]
+        K[Copy Number Alteration] --> L[GISTIC 2.0 & Seg FGA Burden Profiling]
+        M[Somatic Mutations] --> N[COSMIC SBS Mutational Signatures Deconvolution]
+        P[Structural Variants & Fusions] --> Q[CLDN18 & MYLK Fusion / CDKN2A SV Profiling]
+        H & I & J & L & N & Q --> O[Integrated Multi-Modal Feature Store]
     end
 
     subgraph Phase3["Phase 3: Predictive Modeling, Validation & Testing"]
-        P --> Q[Multi-modal Feature Preprocessing & Selection]
-        Q --> R[Model Training: ElasticNet, Random Forest, XGBoost, Neural Nets]
-        R --> S[Stratified K-Fold & Repeated Cross-Validation]
-        S --> T[Evaluation: ROC-AUC, PR-AUC, F1-Score, Brier Score]
-        S --> U[Model Explainability: SHAP Analysis & Biomarker Ranking]
+        O --> P[Multi-modal Feature Preprocessing & Selection]
+        P --> Q[Model Training: ElasticNet, Random Forest, XGBoost, Neural Nets]
+        Q --> R[Stratified K-Fold & Repeated Cross-Validation]
+        R --> S[Evaluation: ROC-AUC, PR-AUC, F1-Score, Brier Score]
+        R --> T[Model Explainability: SHAP Analysis & Biomarker Ranking]
     end
 
     Phase1 --> Phase2 --> Phase3
@@ -73,23 +74,27 @@ flowchart TD
 ---
 
 ### 📌 Phase 2: Multi-Omics Feature Extraction & Regulatory Signatures
-- **Epigenomics (DNA Methylation)**:
-  - Identify Differentially Methylated Regions (**DMRs**) and CpG probes distinguishing GS from CIN.
-  - Characterize hyper/hypo-methylation patterns across promoter and enhancer regions.
-- **Transcriptomics (Differential Gene Expression - DGE)**:
-  - Perform DGE analysis (Log2 Fold Change, Adjusted $p$-values / FDR thresholds).
-  - Pathway and Gene Ontology (GO) / GSEA enrichment analysis.
-- **Gene Regulatory Network (GRN) & Transcription Factor Activity**:
-  - Leverage **`decoupleR`** coupled with the **`DoRothEA`** regulon database.
-  - Infer transcription factor (TF) regulatory activity scores per sample to capture functional upstream transcriptional switches differentiating GS and CIN.
-- **Copy Number Alterations (CNA)**:
-  - High-resolution copy-number segmentation and **GISTIC 2.0** focal/arm-level amplification & deletion profiling.
-  - Quantify CIN burden (fraction of genome altered) vs. diploid-like genomic stability in GS.
-- **Mutational Signatures (COSMIC)**:
-  - Deconvolve somatic single nucleotide variants (SNVs) against **COSMIC Mutational Signatures** (v2/v3).
-  - Evaluate signature activities (e.g., Aging/Deamination, HRD, APOBEC, etc.).
-- **Multi-Omics Fusion**:
-  - Standardize and concatenate multi-omics feature matrices into a clean, aligned tabular feature store.
+- **mRNA Unstranded Counts Curation**:
+  - Fetch TCGA-STAD STAR unstranded raw count matrices using `TCGABiolinks` / GDC API.
+  - Align sample barcodes directly with curated GS ($N=58$) and CIN ($N=147$) clinical cohorts.
+- **Transcriptomics (Differential Gene Expression - DESeq2)**:
+  - Perform differential expression modeling using `pydeseq2` (DESeq2 negative binomial Wald testing).
+  - Derive $log_2(\text{Fold Change})$, Wald statistics, raw $p$-values, and Benjamini-Hochberg adjusted $p$-values ($padj / FDR$).
+- **Pathway & Gene Set Enrichment Analysis (GSEA)**:
+  - Perform pre-ranked GSEA (`gseapy.prerank`) against MSigDB Hallmark gene sets to pinpoint dysregulated transcriptional pathways.
+- **Transcription Factor (TF) Regulatory Activity Scores**:
+  - Leverage **`decoupleR`** coupled with human **`DoRothEA`** regulon database (confidence levels A, B, C).
+  - Infer per-sample transcription factor activity scores to capture upstream master regulator switches distinguishing GS from CIN.
+- **Copy Number Alterations (CNV / CNA)**:
+  - Calculate Fraction Genome Altered (FGA) burden per sample from segmented copy ratio data (`data_cna_hg19.seg`).
+  - Profile high-level amplifications ($+2$) and homozygous deletions ($-2$) across key driver genes (*ERBB2*, *CCNE1*, *CDK6*, *EGFR*, *MET*, *FGFR2*, *MYC*, *KRAS*, *TP53*, *CDKN2A*).
+- **Somatic Mutational Signatures (COSMIC SBS)**:
+  - Extract 96-trinucleotide substitution context spectrums from $130,050$ somatic SNPs (`data_mutations.txt`).
+  - Deconvolve COSMIC SBS signature relative activity exposures (SBS1: Aging, SBS3: HRD, SBS5: Clock-like, SBS17a/b: Gastric/5-FU, SBS2/13: APOBEC) via Non-negative Matrix Factorization (NMF).
+- **Structural Variants & Gene Fusions (SV)**:
+  - Profile hallmark structural rearrangements (`data_sv.txt`), including **`CLDN18` fusions** (hallmark GS driver), **`MYLK` fusions** (CIN enriched), and **`CDKN2A` silencing**.
+- **Integrated Feature Store**:
+  - Concatenate transcriptomic statistics, GSEA pathways, TF activity scores, CNV FGA, COSMIC SBS signature exposures, and SV binary indicators into `results/phase2_integrated_feature_store.csv` ($190 \text{ samples} \times 309 \text{ features}$) for Phase 3.
 
 ---
 
@@ -113,7 +118,7 @@ flowchart TD
 GS_vs_CIN/
 ├── README.md                           # Project documentation and roadmap
 ├── .gitignore                          # Git ignore rules for data and artifacts
-├── data/                               # Data directory (local TCGA datasets, ignored from git)
+├── data/                               # Data directory (TCGA datasets & unstranded counts)
 │   └── stad_tcga_pub/                  # TCGA STAD Nature 2014 dataset
 ├── notebooks/                          # Interactive Jupyter analysis notebooks
 │   ├── 01_phase1_clinical_survival.ipynb
@@ -122,11 +127,11 @@ GS_vs_CIN/
 ├── src/                                # Modular source code (Python / R)
 │   ├── __init__.py
 │   ├── clinical/                       # Clinical curation & survival modeling
-│   ├── omics/                          # DGE, methylation, GISTIC & COSMIC signatures
-│   ├── tf_inference/                   # DecoupleR & DoRothEA TF activity calculations
+│   ├── omics/                          # TCGABiolinks count downloader, DESeq2 DGE & GSEA
+│   ├── tf_inference/                   # DecoupleR & DoRothEA TF activity score inference
 │   ├── models/                         # ML architectures, cross-validation & evaluation
 │   └── utils/                          # Common helpers, I/O and plotting utilities
-├── results/                            # Generated survival curves, volcano plots, metrics
+├── results/                            # Generated DEG tables, TF scores, GSEA results
 └── figures/                            # Publication-quality figures & diagrams
 ```
 
