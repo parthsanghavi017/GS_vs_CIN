@@ -9,10 +9,17 @@ dependencies:
   - scipy
   - matplotlib
   - seaborn
-  - lifelines
-  - statsmodels
   - scikit-learn
+  - statsmodels
+  - lifelines
+  - jupyter
   - jupyterlab
-  - notebook
-  - ipykernel
+  - nbconvert
   - pip
+  - pip:
+      - decoupler>=2.1.4
+      - pydeseq2>=0.5.2
+      - imbalanced-learn>=0.14.2
+      - xgboost>=3.2.0
+      - lightgbm>=4.7.0
+      - shap>=0.49.1
