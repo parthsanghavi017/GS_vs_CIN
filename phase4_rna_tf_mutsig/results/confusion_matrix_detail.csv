@@ -1,0 +1,6 @@
+Model,TN_GS_Correct,FP_GS_Called_CIN,FN_CIN_Called_GS,TP_CIN_Correct,Sensitivity_CIN,Specificity_GS,Overall_Accuracy
+Random Forest,7,4,1,24,96.0%,63.6%,86.1%
+XGBoost,8,3,3,22,88.0%,72.7%,83.3%
+LightGBM,7,4,3,22,88.0%,63.6%,80.6%
+Logistic Regression,7,4,2,23,92.0%,63.6%,83.3%
+Support Vector Machine,8,3,1,24,96.0%,72.7%,88.9%

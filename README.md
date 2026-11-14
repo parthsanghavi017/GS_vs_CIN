@@ -109,6 +109,23 @@ flowchart TD
 - **Interpretability & Biomarker Prioritization**:
   - Global and local feature attribution using **SHAP (SHapley Additive exPlanations)** values.
   - Identify key multi-omics driver genes, regulatory TFs, and genomic hallmarks that define the distinct biology of GS vs. CIN gastric cancer.
+  - **Ablation Study (Zero CNA Burden)**: Retrained all classifiers omitting global copy-number burden to evaluate focal CNA gene dependencies.
+  - **Copy-Number-Free Classification (`phase3_rna_only/`)**: Evaluated Pure mRNA (46 DESeq2 genes) and mRNA + DoRothEA TF regulons ($N=76$), proving high classification performance (Test ROC-AUC = 0.909 - 0.941, Test PR-AUC = 0.964 - 0.978) without DNA copy-number assays.
+
+---
+
+### 📌 Phase 4: Mutational Signatures (COSMIC SBS) & RNA-TF Synergy
+- **Mutational Signature Integration (`phase4_rna_tf_mutsig/`)**:
+  - Combined 46 mRNA transcripts, 30 decoupleR DoRothEA TFs, and 5 COSMIC SBS mutational signatures ($p=81$ features, $N=177$ patients).
+  - Evaluated 5 machine learning models (Random Forest, SVM, LightGBM, XGBoost, Logistic Regression) using SMOTE-balanced 10-fold cross-validation.
+  - Key Findings:
+    - **Random Forest** achieved Holdout Test ROC-AUC = **0.975**, PR-AUC = **0.990**, F1-Score = **0.906**.
+    - **SVM** achieved Balanced Accuracy = **0.844**, Test F1 = **0.923**.
+    - **APOBEC Cytidine Deaminase Activity (`SBS2/13`)** is significantly elevated in CIN ($p = 1.37 \times 10^{-7}$) and emerges as a top 5 biomarker via SHAP attribution.
+- **Cross-Modality Benchmark & Reports**:
+  - Head-to-head evaluation across 7 distinct molecular regimes documented in [`COMPARATIVE_ANALYSIS_CNA_CNV_VS_RNA_AND_MUTSIG.md`](COMPARATIVE_ANALYSIS_CNA_CNV_VS_RNA_AND_MUTSIG.md) and [`summary.txt`](summary.txt).
+- **Conference Presentation**:
+  - Abstract and presentation materials for **Bengaluru Tech Summit 2026** documented in [`tech_summit_2026/`](tech_summit_2026/).
 
 ---
 
@@ -116,23 +133,40 @@ flowchart TD
 
 ```text
 GS_vs_CIN/
-├── README.md                           # Project documentation and roadmap
-├── .gitignore                          # Git ignore rules for data and artifacts
-├── data/                               # Data directory (TCGA datasets & unstranded counts)
-│   └── stad_tcga_pub/                  # TCGA STAD Nature 2014 dataset
-├── notebooks/                          # Interactive Jupyter analysis notebooks
+├── README.md                                          # Project documentation and roadmap
+├── .gitignore                                         # Git ignore rules for data and artifacts
+├── environment.yml                                    # Conda environment specification
+├── summary.txt                                        # Comprehensive results and benchmark summary
+├── COMPARATIVE_ANALYSIS_CNA_CNV_VS_RNA_AND_MUTSIG.md  # 7-regime cross-modality comparative report
+├── oncoenricher classification of shap gene.xls      # SHAP gene enrichment & functional annotation
+├── notebooks/                                         # Interactive Jupyter analysis notebooks
 │   ├── 01_phase1_clinical_survival.ipynb
 │   ├── 02_phase2_multiomics_features.ipynb
-│   └── 03_phase3_modeling_evaluation.ipynb
-├── src/                                # Modular source code (Python / R)
-│   ├── __init__.py
-│   ├── clinical/                       # Clinical curation & survival modeling
-│   ├── omics/                          # TCGABiolinks count downloader, DESeq2 DGE & GSEA
-│   ├── tf_inference/                   # DecoupleR & DoRothEA TF activity score inference
-│   ├── models/                         # ML architectures, cross-validation & evaluation
-│   └── utils/                          # Common helpers, I/O and plotting utilities
-├── results/                            # Generated DEG tables, TF scores, GSEA results
-└── figures/                            # Publication-quality figures & diagrams
+│   └── 03_phase3_machine_learning_classifier.ipynb
+├── phase3_rna_only/                                   # Phase 3 RNA-only & TF classifier pipeline
+│   ├── 03_phase3_gene_expression_classifier.ipynb
+│   ├── run_phase3_rna_only.py
+│   ├── PHASE3_GENE_EXPRESSION_SUMMARY.md
+│   ├── data/                                         # mRNA & TF feature matrices
+│   ├── figures/                                      # Phase 3 ROC, PR, confusion matrices & SHAP plots
+│   └── results/                                      # Phase 3 model metrics and feature rankings
+├── phase4_rna_tf_mutsig/                              # Phase 4 Mutational Signatures + RNA + TF
+│   ├── 04_phase4_rna_tf_mutsig_classifier.ipynb
+│   ├── run_phase4_rna_tf_mutsig.py
+│   ├── create_phase4_notebook.py
+│   ├── PHASE4_RNA_TF_MUTSIG_REPORT.md
+│   ├── data/                                         # Integrated 81-feature multi-modal matrix
+│   ├── figures/                                      # ROC/PR, beeswarm, SHAP and SBS distribution plots
+│   └── results/                                      # Phase 4 classification metrics and differential stats
+├── tech_summit_2026/                                  # Bengaluru Tech Summit 2026 conference materials
+│   ├── Bengaluru_Tech_Summit_2026_Abstract_GS_vs_CIN.md
+│   ├── Bengaluru_Tech_Summit_2026_Abstract_GS_vs_CIN.docx
+│   ├── Bengaluru_Tech_Summit_2026_Abstract_GS_vs_CIN.pdf
+│   ├── Bengaluru_Tech_Summit_2026-Abstract-submission-template.pdf
+│   └── generate_abstract_doc.py
+├── stad_tcga_pub/                                     # TCGA STAD Nature 2014 publication datasets
+├── results/                                           # Phase 1-3 tables, feature stores & benchmarks
+└── figures/                                           # Publication-quality figures & cross-modal plots
 ```
 
 ---

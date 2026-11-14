@@ -1,0 +1,276 @@
+================================================================================
+TCGA-STAD: GENOMICALLY STABLE (GS) vs. CHROMOSOMAL INSTABILITY (CIN)
+MULTI-OMICS & CLINICAL PROFILING - COMPREHENSIVE PROJECT SUMMARY
+================================================================================
+
+1. PROJECT OVERVIEW & SCIENTIFIC MOTIVATION
+--------------------------------------------------------------------------------
+Gastric adenocarcinoma (STAD) is classified by TCGA (Nature 2014) into four 
+distinct molecular subtypes:
+  1. EBV (Epstein-Barr virus-positive) - Hypermethylation, PIK3CA mutations, high PD-L1/2.
+  2. MSI (Microsatellite Instability)  - Hypermutation, MLH1 silencing, high neoantigen burden.
+  3. GS (Genomically Stable)           - Low somatic copy-number alterations, diffuse histology,
+                                         frequent CDH1 & RHOA mutations, CLDN18-ARHGAP fusions.
+  4. CIN (Chromosomal Instability)     - Marked aneuploidy, intestinal histology, TP53 mutations,
+                                         recurrent RTK/cell-cycle amplifications (HER2, CCNE1, CDK6).
+
+While EBV and MSI have prominent hypermutation/immune signatures making them easier
+to distinguish, GS and CIN represent the non-hypermutated majority of gastric cancers.
+This project focuses on comparative clinical profiling, survival disparities, and machine
+learning classification distinguishing GS from CIN, concentrating primarily on:
+  - RNA-seq gene expression (PyDESeq2)
+  - Transcription factor (TF) regulatory activity (decoupleR + DoRothEA)
+  - Copy Number Alterations (CNV/CNA - global burden & focal driver alterations)
+(Note: Somatic mutational signatures were explored in raw files but deliberately excluded
+from the final predictive feature store to maintain a sharp focus on RNA and CNV).
+
+
+================================================================================
+2. PHASE 1: CLINICAL COHORT & SURVIVAL PROFILING
+Notebook: notebooks/01_phase1_clinical_survival.ipynb
+--------------------------------------------------------------------------------
+
+A. Cohort Ingestion & Subtype Curation:
+  - Input files: data_clinical_patient.txt and data_clinical_sample.txt.
+  - Initial cohort: 295 raw TCGA STAD samples.
+  - Subtype breakdown: CIN (147), MSI (64), GS (58), EBV (26).
+  - Curation logic: EBV and MSI cases are removed.
+  - Curated cohort: 205 patients (147 CIN [71.7%], 58 GS [28.3%]).
+
+B. Baseline Clinicopathological Profiling:
+  - Age (Mann-Whitney U, p < 0.0001):
+      GS patients are significantly younger: Median 59.4 years (IQR 53.5 - 68.4)
+      vs. CIN patients: Median 68.4 years (IQR 58.9 - 75.2).
+  - Lauren Histological Classification (Chi-Square, p < 0.0001):
+      GS is heavily enriched for Diffuse type (69.0% Diffuse vs. 25.9% Intestinal).
+      CIN is heavily enriched for Intestinal type (80.3% Intestinal vs. 12.2% Diffuse).
+  - Sex (Chi-Square, p = 0.7137):
+      Balanced distribution (~65% Male, ~35% Female in both groups).
+  - AJCC Pathological Stage (Chi-Square, p = 0.6132):
+      Balanced distribution; majority present at Stage II (38.5%) or Stage III (40.0%).
+
+C. Survival Analysis & Clinically Justified Age Stratification:
+  - Full Cohort (N = 205): Unstratified Kaplan-Meier analysis showed overlapping tails
+    due to elderly patients (>75-80 years) dying of non-cancer competing mortalities.
+  - Age <= 70 Subcohort (N = 128):
+      GS displays a dramatically worse 5-year Overall Survival (OS) rate:
+        * GS:  Median OS = 24.4 months | 5-Year OS = 23.1%
+        * CIN: Median OS = 69.0 months | 5-Year OS = 68.1%
+        * Log-Rank p-value: p = 0.0210
+  - Age <= 75 Subcohort (N = 163, ~80% of active clinical cohort):
+      Persistent long-term survival deficit in GS:
+        * GS:  Median OS = 59.0 months | 5-Year OS = 27.5%
+        * CIN: Median OS = 69.0 months | 5-Year OS = 63.3%
+        * Log-Rank p-value: p = 0.0270
+
+D. Multivariable Cox Proportional Hazards Model (Age <= 75 Cohort):
+  - Covariates: MOLECULAR_SUBTYPE, AGE, SEX, STAGE_SIMPLIFIED, LAUREN_CLASS.
+  - Performance: Concordance Index (C-Index) = 0.662.
+  - Finding: GS subtype independently correlates with elevated risk of mortality
+    after adjusting for clinicopathological confounders.
+
+
+================================================================================
+3. PHASE 2: MULTI-OMICS FEATURE EXTRACTION & INTEGRATED FEATURE STORE
+Notebook: notebooks/02_phase2_multiomics_features.ipynb
+--------------------------------------------------------------------------------
+
+A. Transcriptomics via PyDESeq2 (Differential Gene Expression - DGE):
+  - Input: data_mrna_seq_v2_rsem.txt (raw RSEM expected counts).
+  - Matched samples: 181 patients with intersecting RNA + CNA profiles (128 CIN, 53 GS).
+  - Pipeline: Filtered low-count genes (sum of counts > 100), instantiated DeseqDataSet,
+    estimated size factors and dispersions, fitted negative binomial GLMs, and performed
+    Wald contrast testing (CIN vs. GS).
+  - Key Top Differentially Expressed Genes:
+      * CIN Upregulated / GS Downregulated:
+          - UBE2C (log2FC = +1.76, padj = 4.95e-19) - Mitotic spindle assembly & cell cycle
+          - AURKA (log2FC = +1.57, padj = 4.95e-19) - Aurora kinase A, genomic instability
+          - GRB7  (log2FC = +2.56, padj = 5.63e-18) - Co-amplified with ERBB2/HER2 on 17q
+          - RAE1  (log2FC = +0.90, padj = 1.03e-17) - Mitotic spindle checkpoint
+      * GS Upregulated / CIN Downregulated:
+          - CD79B  (log2FC = -3.02, padj = 4.36e-20) - B-cell / immune microenvironment
+          - SH3BP5 (log2FC = -0.93, padj = 5.63e-18) - Cell motility & signaling regulation
+  - Feature selection: Top 50 DGE genes by padj retained for ML modeling.
+
+B. Transcription Factor (TF) Regulatory Activity via decoupleR & DoRothEA:
+  - Input: RSEM z-scores (data_mrna_seq_v2_rsem_zscores_ref_diploid_samples.txt).
+  - Regulons: Human DoRothEA (Confidence A, B, C).
+  - Method: Univariate Linear Model (ULM) fitting gene expression against TF target matrices.
+  - Key Regulatory Switches:
+      * CIN-Enriched TFs (High activity in CIN, suppressed in GS):
+          - E2F family: E2F3 (delta = +2.06, p = 1.19e-13), E2F2 (delta = +2.45, p = 1.27e-13),
+            E2F4 (delta = +5.66, p = 1.21e-12), TFDP1 (delta = +3.00, p = 1.41e-12)
+          - Master proliferation & replication regulators: MYC, DNMT1.
+      * GS-Enriched TFs (High activity in GS, suppressed in CIN):
+          - GLI1 (delta = -0.99, p = 2.16e-13) - Hedgehog pathway master effector, 
+            hallmark of diffuse gastric adenocarcinoma and cancer stemness.
+          - EBF1 (delta = -3.10, p = 2.80e-12).
+
+C. Copy Number Alterations (CNA) & Genomic Instability Profiling:
+  - Input: data_cna.txt (discrete GISTIC scores: -2, -1, 0, 1, 2).
+  - Chromosomal Instability Burden (CNA_Burden):
+      Fraction of altered genome per patient. CIN displays vastly greater genome-wide
+      instability than GS (p = 3.93e-31, Mann-Whitney U).
+  - Landmark Focal Amplifications:
+      * CCNE1: 19.1% CIN vs. 1.9% GS (p = 0.0011)
+      * ERBB2: 22.1% CIN vs. 3.8% GS (p = 0.0020)
+      * CDK6:  14.0% CIN vs. 0.0% GS (p = 0.0021)
+      * MET:    8.1% CIN vs. 0.0% GS (p = 0.0360)
+  - Top 10 High-Frequency Gain Genes:
+      B4GALT5, TSHZ2, ZNF217, LINC01270, PARD6B, KCNB1, LOC389332, etc.
+  - Top 10 High-Frequency Loss Genes:
+      FAM190A, HSP90AA4P, FRG1, TRIML1, LOC339975, LOC100288255, etc.
+
+D. Unified Multi-Omics Feature Store:
+  - Exported to results/multiomics_feature_matrix.csv.
+  - Matrix shape: 181 samples x 98 features (128 CIN, 53 GS).
+  - Feature Breakdown:
+      * Top 50 PyDESeq2 mRNA z-scores
+      * Top 26 decoupleR DoRothEA TF activity scores
+      * Top 10 CNA Gain indicator states
+      * Top 10 CNA Loss indicator states
+      * 1 Global CNA_Burden metric
+      * 1 Subtype label (Target: CIN = 1, GS = 0)
+
+
+================================================================================
+4. PHASE 3: MACHINE LEARNING CLASSIFIERS, ABLATION STUDY & SHAP
+Notebook: notebooks/03_phase3_machine_learning_classifier.ipynb
+--------------------------------------------------------------------------------
+
+A. Cross-Validation Architecture & Imbalance Handling:
+  - Target: CIN = 1 (128 samples, 70.7%), GS = 0 (53 samples, 29.3%).
+  - Cohort Split: 80% Train (N = 144) and 20% Holdout Test (N = 37), stratified.
+  - Anti-leakage Pipeline (via imblearn.pipeline.Pipeline):
+      1. StandardScaler()
+      2. SMOTE(random_state=42) - applied strictly on training folds
+      3. Class-weighted classifier (class_weight="balanced")
+  - Evaluated via 10-Fold Stratified Cross-Validation on Train + Final Test on Holdout.
+
+B. Experiment 1: Full Multi-Omics Model (With CNA_Burden):
+  - Random Forest:      10CV ROC-AUC = 0.974 | Test ROC-AUC = 0.979 | Test PR-AUC = 0.993 | Test F1 = 0.926
+  - XGBoost:            10CV ROC-AUC = 0.988 | Test ROC-AUC = 0.986 | Test PR-AUC = 0.995 | Test F1 = 0.980
+  - LightGBM:           10CV ROC-AUC = 0.992 | Test ROC-AUC = 0.983 | Test PR-AUC = 0.994 | Test F1 = 0.980
+  - Logistic Reg (EN):  10CV ROC-AUC = 0.977 | Test ROC-AUC = 0.990 | Test PR-AUC = 0.996 | Test F1 = 0.943
+  - SVM:                10CV ROC-AUC = 0.940 | Test ROC-AUC = 0.962 | Test PR-AUC = 0.985 | Test F1 = 0.926
+
+  SHAP Feature Importance (Full Model):
+    1. CNA_Burden (Mean |SHAP| = 0.1068) - Dominant single predictor
+    2. TF_GLI1 (0.0195)                 - Active in GS / repressed in CIN
+    3. CNA_Gain_B4GALT5 (0.0176)        - Frequent CIN amplification
+    4. CNA_Gain_ZNF217 (0.0156)         - 20q13 oncogenic amplification
+    5. CNA_Gain_LINC01270 (0.0155)      - Focal gain
+    6. CNA_Gain_PARD6B (0.0153)         - Polarity / epithelial marker
+    7. mRNA_SH3BP5 (0.0145)             - Transcriptomic marker
+    8. CNA_Loss_TRIML1 (0.0137)         - Focal deletion
+    9. mRNA_AURKA (0.0120)              - Mitotic kinase upregulation in CIN
+
+C. Experiment 2: Ablation Study (Retrained WITHOUT CNA_Burden):
+  * Biological rationale: Proving whether focal multi-omics alterations (RNA + TF + focal CNV)
+    can classify GS vs. CIN accurately without relying on the global aneuploidy metric.
+  - Results on Holdout Test Set:
+      * Random Forest:      10CV ROC-AUC = 0.941 | Test ROC-AUC = 0.962 | Test PR-AUC = 0.986
+      * XGBoost:            10CV ROC-AUC = 0.928 | Test ROC-AUC = 0.955 | Test PR-AUC = 0.984
+      * LightGBM:           10CV ROC-AUC = 0.936 | Test ROC-AUC = 0.951 | Test PR-AUC = 0.982
+      * Logistic Reg (EN):  10CV ROC-AUC = 0.934 | Test ROC-AUC = 0.951 | Test PR-AUC = 0.982
+      * SVM:                10CV ROC-AUC = 0.926 | Test ROC-AUC = 0.916 | Test PR-AUC = 0.965
+
+  SHAP Feature Importance (Ablated Model without CNA_Burden):
+    1. CNA_Gain_LINC01270 (0.0224)
+    2. mRNA_SH3BP5 (0.0193)
+    3. TF_GLI1 (0.0186)
+    4. CNA_Gain_B4GALT5 (0.0181)
+    5. CNA_Gain_PARD6B (0.0174)
+    6. mRNA_AURKA (0.0165)
+    7. mRNA_ANLN (0.0161)
+    8. CNA_Gain_TSHZ2 (0.0137)
+    9. CNA_Gain_KCNB1 (0.0136)
+   10. CNA_Loss_LOC100288255 (0.0133)
+
+  Conclusion from Ablation:
+  Even in the complete absence of global copy-number burden, transcriptomic expression (SH3BP5,
+  AURKA, ANLN), transcription factor regulons (GLI1), and focal gene amplifications (LINC01270,
+  B4GALT5, PARD6B) retain outstanding classification accuracy (>0.95 Test ROC-AUC).
+
+D. Experiment 3: Pure RNA & Gene Expression Classification (Zero CNA / Zero CNV):
+  * Focus: Complete ablation of ALL DNA copy-number alterations (global burden + focal amplicons).
+  - Pure mRNA (46 DESeq2 differential transcripts, Zero CNA/CNV/TF):
+      * LightGBM:           10CV ROC-AUC = 0.898 | Test ROC-AUC = 0.909 | Test PR-AUC = 0.964 | Test F1 = 0.852
+      * Logistic Reg:       10CV ROC-AUC = 0.846 | Test ROC-AUC = 0.902 | Test PR-AUC = 0.961 | Test F1 = 0.852
+      * XGBoost:            10CV ROC-AUC = 0.880 | Test ROC-AUC = 0.895 | Test PR-AUC = 0.957 | Test F1 = 0.846
+      * SVM:                10CV ROC-AUC = 0.853 | Test ROC-AUC = 0.885 | Test PR-AUC = 0.957 | Test F1 = 0.863
+      * Random Forest:      10CV ROC-AUC = 0.870 | Test ROC-AUC = 0.874 | Test PR-AUC = 0.945 | Test F1 = 0.852
+  - RNA Multi-Omics (46 mRNA + 30 decoupleR DoRothEA TFs, Zero CNA/CNV):
+      * XGBoost:            10CV ROC-AUC = 0.883 | Test ROC-AUC = 0.941 | Test PR-AUC = 0.978 | Test F1 = 0.906
+      * LightGBM:           10CV ROC-AUC = 0.901 | Test ROC-AUC = 0.937 | Test PR-AUC = 0.976 | Test F1 = 0.889
+      * Random Forest:      10CV ROC-AUC = 0.890 | Test ROC-AUC = 0.927 | Test PR-AUC = 0.973 | Test F1 = 0.893
+      * SVM:                10CV ROC-AUC = 0.900 | Test ROC-AUC = 0.902 | Test PR-AUC = 0.960 | Test F1 = 0.846
+      * Logistic Reg:       10CV ROC-AUC = 0.867 | Test ROC-AUC = 0.899 | Test PR-AUC = 0.960 | Test F1 = 0.857
+
+E. Experiment 4: Integration of Somatic Mutational Signatures (COSMIC SBS):
+  * Question: Will Phase 3 RNA-only metrics increase if we add mutation signatures?
+  * Empirical Verdict: YES, significantly for Pure mRNA alone.
+  - Pure mRNA + 5 COSMIC SBS Signatures (51 features, Zero CNA/CNV):
+      * LightGBM:           10CV ROC-AUC = 0.886 | Test ROC-AUC = 0.934 (+0.025) | Test PR-AUC = 0.974 | Test F1 = 0.906 (+5.4%)
+      * XGBoost:            10CV ROC-AUC = 0.896 | Test ROC-AUC = 0.913 (+0.018) | Test PR-AUC = 0.966 | Test F1 = 0.863 (+1.7%)
+      * Random Forest:      10CV ROC-AUC = 0.862 | Test ROC-AUC = 0.892 (+0.018) | Test PR-AUC = 0.958 | Test F1 = 0.857
+  - mRNA + TF + 5 COSMIC SBS Signatures (81 features, Zero CNA/CNV):
+      * XGBoost achieves 10CV ROC-AUC = 0.915 (highest cross-validation stability of any RNA model).
+      * Random Forest Holdout Test ROC-AUC = 0.927 | Test PR-AUC = 0.973 | Test F1 = 0.893.
+  - Biological Basis:
+      * CIN is significantly enriched for SBS2/13 (APOBEC cytidine deaminase activity: mean 0.216 vs 0.107, p = 3.80e-5)
+        and SBS17 (Gastric/5-FU-like: mean 0.138 vs 0.086, p = 0.043).
+      * SHAP analysis: SBS_SBS2_13_APOBEC ranks as #5 overall most predictive feature across all 51 features.
+
+F. Cross-Regime Diagnostic Performance Comparison (Best Classifier per Regime):
+  1. Full Multi-Omics (CNA Burden + Focal CNA + RNA + TF): Test ROC = 0.989 | PR = 0.996 | F1 = 0.980
+  2. Multi-Omics Ablation (Focal CNA + RNA + TF, No Burden): Test ROC = 0.962 | PR = 0.986 | F1 = 0.929
+  3. RNA Multi-Omics (mRNA + TF, Zero CNA/CNV):              Test ROC = 0.941 | PR = 0.978 | F1 = 0.906
+  4. Pure mRNA + SBS Mutational Signatures:                  Test ROC = 0.934 | PR = 0.974 | F1 = 0.906
+  5. mRNA + TF + SBS Mutational Signatures:                  Test ROC = 0.927 | PR = 0.973 | F1 = 0.893 (10CV = 0.915)
+  6. Pure mRNA Alone (46 Genes, Zero CNA/CNV/TF):            Test ROC = 0.909 | PR = 0.964 | F1 = 0.863
+  7. SBS Mutational Signatures Alone:                        Test ROC = 0.724 | PR = 0.882 | F1 = 0.808
+
+
+================================================================================
+5. ARTIFACT & FIGURE INVENTORY
+================================================================================
+Key Output Results in results/:
+  - results/baseline_clinical_table.csv
+  - results/dge_deseq2_gs_vs_cin.csv
+  - results/differential_tf_activity.csv
+  - results/cnv_focal_alterations.csv
+  - results/multiomics_feature_matrix.csv
+  - results/ml_model_comparison_metrics.csv
+  - results/ml_ablation_no_cna_burden_metrics.csv
+  - results/ml_feature_importances_shap.csv
+  - results/ml_feature_importances_no_cna_burden_shap.csv
+  - results/comprehensive_cross_modal_benchmark.csv
+  - results/pure_mrna_sbs_shap_importances.csv
+  - phase3_rna_only/results/ml_pure_mrna_only_metrics.csv
+  - phase3_rna_only/results/ml_mrna_tf_metrics.csv
+
+Key Visualizations in figures/:
+  - figures/km_os_age_under_70.png
+  - figures/km_os_age_under_75.png
+  - figures/volcano_dge_deseq2.png
+  - figures/heatmap_tf_activity.png
+  - figures/boxplot_cna_burden.png
+  - figures/barplot_cna_gains.png
+  - figures/barplot_cna_losses.png
+  - figures/roc_pr_curves_phase3.png
+  - figures/roc_pr_curves_no_cna_burden_phase3.png
+  - figures/ablation_comparison_phase3.png
+  - figures/shap_summary_phase3.png
+  - figures/shap_summary_no_cna_burden_phase3.png
+  - figures/cross_modal_cna_vs_rna_vs_sbs_comparison.png (and .pdf)
+  - figures/mrna_sbs_shap_importances.png (and .pdf)
+  - phase3_rna_only/figures/pure_mrna_roc_pr.png
+  - phase3_rna_only/figures/mrna_tf_roc_pr.png
+  - phase3_rna_only/figures/pure_mrna_top_shap_genes.png
+
+Detailed Analytical Reports:
+  - COMPARATIVE_ANALYSIS_CNA_CNV_VS_RNA_AND_MUTSIG.md
+  - phase3_rna_only/PHASE3_GENE_EXPRESSION_SUMMARY.md
+================================================================================
+

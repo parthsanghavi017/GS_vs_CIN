@@ -47,8 +47,10 @@ stad_tcga_pub/data_mrna_seq_v2_rsem.txt
 stad_tcga_pub/data_linear_cna.txt
 stad_tcga_pub/data_cna.txt
 stad_tcga_pub/*methylation*
-data/
-raw_data/
+/data/
+/raw_data/
+!phase3_rna_only/data/**
+!phase4_rna_tf_mutsig/data/**
 *.seg
 *.bam
 *.vcf
@@ -66,3 +68,7 @@ checkpoints/
 Thumbs.db
 .vscode/
 .idea/
+
+# LibreOffice and lock files
+.~lock.*
+*.lock
